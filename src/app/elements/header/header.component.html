@@ -1,0 +1,29 @@
+<!-- FILEPATH: /Users/joeldev/Projects/1_Schule/Semester3/uek294/frontend/product-manager-frontend/src/app/elements/header/header.component.html -->
+<header>
+  <mat-toolbar color="primary">
+    <!-- Button with menu icon -->
+    <button mat-raised-button color="primary" class="example-icon" aria-label="Example icon-button with menu icon"
+      (click)="hamButton()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="tiny-spacer"></span>
+    <!-- Shop.com button -->
+    <button routerLink="" mat-raised-button color="primary">Shop.com</button>
+    <span class="example-spacer"></span>
+    <!-- Categories button with dropdown -->
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Categories</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item color="primary" routerLink="categories">Categories</button>
+      <button mat-menu-item routerLink="categories/create">Create</button>
+
+    </mat-menu>
+
+
+    <span class="tiny-spacer"></span>
+    <!-- Products button -->
+    <button mat-raised-button color="primary" routerLink="products">Products</button>
+    <span class="tiny-spacer"></span>
+    <!-- More button -->
+    <button mat-raised-button color="primary" routerLink="test">more</button>
+  </mat-toolbar>
+</header>
