@@ -24,6 +24,8 @@
     <button mat-raised-button color="primary" routerLink="products">Products</button>
     <span class="tiny-spacer"></span>
     <!-- More button -->
-    <button mat-raised-button color="primary" routerLink="test">more</button>
+    
+    <button mat-raised-button color="primary" routerLink="auth/login" *ngIf="!isLogin">Login</button>
+    <button mat-raised-button color="primary" routerLink="test" *ngIf="isLogin">{{name}}</button>
   </mat-toolbar>
 </header>

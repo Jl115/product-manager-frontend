@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+// Global styles defined here will be available to all components important need to import with @use 'relativePath from used destination' as styles;
+$primary-color: rgb(103, 58, 183);
 
 html, body { height: 100%; }
 body { 
@@ -11,3 +13,15 @@ pm-root {
     height: 100%;
 }
 
+pm-login{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+      margin: 0;
+      padding: 0;
+
+  }
+
+  .tiny-spacer {
+    flex: 0.01;
+  }

@@ -1,17 +1,26 @@
+<div class="login-container">
 <div class="example-container">
     <mat-form-field>
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" formControlName="email" required>
-      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        @if (email.invalid) {
+        <mat-error>{{getErrorMessage("mail")}}</mat-error>
+        }
     </mat-form-field>
-  </div>
-  <div class="example-container">
+</div>
+<div class="example-container">
     <mat-form-field>
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com" [formControl]="email" required>
-      @if (email.invalid) {
-        <mat-error>{{getErrorMessage()}}</mat-error>
-      }
+        <mat-label>Enter a Password</mat-label>
+        <input matInput placeholder="Password" [formControl]="password" required>
+        @if (password.invalid) {
+        <mat-error>{{getErrorMessage("pass")}}</mat-error>
+        }
     </mat-form-field>
-  </div>
-  
+</div>
+<div class="button-container">
+<button mat-raised-button color="primary" (click)="login()" class="button">Login</button>
+<div class="tiny-spacer"></div>
+<button mat-raised-button color="primary" routerLink="/auth/register" class="button" >Register</button>
+</div>
+</div>
+<!-- error handling componente  um das error handling   zu managen-->

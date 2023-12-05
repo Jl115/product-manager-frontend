@@ -14,6 +14,7 @@ import { CategoryEditComponent } from './pages/category/category-edit/category-e
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './pages/product/product-create/product-create.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';
+import { ImpressumComponent } from './pages/impressum/impressum.component';
 
 const routes: Routes = [
   {
@@ -22,9 +23,8 @@ const routes: Routes = [
     title: 'Home',
   },
   {
-    path: 'test',
-    component: TestComponent,
-    title: 'Test',
+  path: 'impressum',
+  component: ImpressumComponent,
   },
   // Authentifications routes
   {
@@ -90,5 +90,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+
 })
 export class AppRoutingModule {}

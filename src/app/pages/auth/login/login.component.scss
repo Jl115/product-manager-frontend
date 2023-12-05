@@ -1,0 +1,31 @@
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 20rem;
+}
+.example-container {
+ width: 100%;
+    
+}
+mat-form-field{
+    width: 100%;
+}
+.button-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .button-container {
+        display: flex;
+        width: 10%;
+        justify-content: space-between;
+    }
+    
+    .mat-mdc-raised-button:not(:disabled){
+        padding: 0 50px 0 50px;
+    }
+}

@@ -20,6 +20,8 @@ export class HeaderComponent implements OnChanges{
 @Output()  isSideBar = false;
 
 @Output() newItemEvent = new EventEmitter<boolean>();
+isLogin: boolean = false;
+name: string = "test";
 
 addIsSideBar(isSideBar: boolean) {
   this.newItemEvent.emit(isSideBar);
@@ -37,6 +39,11 @@ hamButton() {
   this.isSideBar = !this.isSideBar;
   this.addIsSideBar(this.isSideBar);
   console.log(this.isSideBar);
+}
+
+getProfile() {
+  this.isLogin = true;
+  this.name = "Profile";
 }
 
 }
