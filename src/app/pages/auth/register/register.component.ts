@@ -37,7 +37,11 @@ export class RegisterComponent {
       phone: ['', Validators.pattern('[0-9]+')],
       mobilePhone: ['', Validators.pattern('[0-9]+')],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [
+        Validators.required, 
+        Validators.minLength(8),
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$')
+      ]]
     });
   }
 
@@ -45,17 +49,15 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       console.log('Registration data:', this.registerForm.value);
   
-      // Verwenden Sie this.registerForm.value direkt
       this.userControllerService.register(this.registerForm.value).subscribe(
         user => {
           console.log('Server response:', user);
-          // Implementieren Sie hier die Logik bei erfolgreicher Registrierung
-          console.log(this.userControllerService.getAllUsers());
+          
           this.isError = false;
         },
         error => {
           console.error('Error during registration:', error);
-          // Implementieren Sie hier die Fehlerbehandlung
+
           this.isError = true;
           
         }

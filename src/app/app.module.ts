@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ApiModule, Configuration } from './openapi-client';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HomeComponent } from './pages/home/home/home.component';
 import { TestComponent } from './pages/test/test.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 
@@ -28,7 +29,13 @@ import { TestComponent } from './pages/test/test.component';
         TestComponent,
 
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            multi: true,
+            useClass: AuthInterceptor
+        }
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,

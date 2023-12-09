@@ -34,6 +34,8 @@ export class LoginComponent {
   password = new FormControl('', [
     Validators.required,
     Validators.minLength(6),
+    Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$')
+
   ]);
   constructor(private userControllerService: UserControllerService) {}
 
@@ -48,20 +50,18 @@ export class LoginComponent {
         return 'Password must be at least 6 characters';
       } else if (this.password.hasError('required')) {
         return 'You must enter a value';
+      }else if (this.password.hasError('pattern')) {
+        return 'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character (@#$%^&+=)';
       }
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   login() {
     if (this.email.valid && this.password.valid) {
-      const loginRequest: LoginRequestDto = {
-        email: this.email.value!,
-        password: this.password.value!
-      };
-  
-      this.userControllerService.login(loginRequest).subscribe(
+      this.userControllerService.login({ password: this.password.value!, email: this.email.value!}).subscribe(
         response => {
           console.log('Login successful', response);
+          localStorage.setItem('ACCESS_TOKEN', response.token!);
           // Erfolgslogik
         },
         error => {
