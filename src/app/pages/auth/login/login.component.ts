@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { UserControllerService } from 'src/app/openapi-client/api/api';
+import { LoginRequestDto } from 'src/app/openapi-client/model/loginRequestDto';
 
 @Component({
   selector: 'pm-login',
@@ -33,27 +35,44 @@ export class LoginComponent {
     Validators.required,
     Validators.minLength(6),
   ]);
+  constructor(private userControllerService: UserControllerService) {}
 
   getErrorMessage(type: string) {
-    if (type === 'mail' || type === 'email' ) {
-      if (
-        this.email.hasError('required') 
-      ) {
+    if (type === 'mail' || type === 'email') {
+      if (this.email.hasError('required')) {
         return 'You must enter a value';
       }
     }
     if (type === 'pass' || type === 'password') {
       if (this.password.hasError('minlength')) {
         return 'Password must be at least 6 characters';
-      }else if (this.password.hasError('required')) {
+      } else if (this.password.hasError('required')) {
         return 'You must enter a value';
       }
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
-  };
-  login(){
-    if (this.email.valid || this.password.valid) {
-    console.log(this.email.value, this.password.value);
   }
-}
+  login() {
+    if (this.email.valid && this.password.valid) {
+      const loginRequest: LoginRequestDto = {
+        email: this.email.value!,
+        password: this.password.value!
+      };
+  
+      this.userControllerService.login(loginRequest).subscribe(
+        response => {
+          console.log('Login successful', response);
+          // Erfolgslogik
+        },
+        error => {
+          console.error('Login failed', error);
+          // Fehlerbehandlungslogik
+        }
+      );
+    } else {
+      console.log('Form is not valid');
+    }
+  }
+  
+  
 }

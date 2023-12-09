@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiModule, Configuration } from './openapi-client';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HomeComponent } from './pages/home/home/home.component';
 import { TestComponent } from './pages/test/test.component';
+
 
 
 
@@ -38,7 +41,13 @@ import { TestComponent } from './pages/test/test.component';
         MatToolbarModule,
         MatSidenavModule,
         MatSelectModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        HttpClientModule,
+        ApiModule.forRoot(() => {
+            return new Configuration({
+                basePath: 'https://product-manager.cyrotech.ch'
+            });
+        }),
     ]
 })
 export class AppModule { }
