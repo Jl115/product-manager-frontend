@@ -1,1 +1,39 @@
-<p>product works!</p>
+<div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">
+    <span class="loading loading-spinner h-28 w-28"></span>
+</div>
+<div class="flex w-full justify-center items-center ">
+<input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Type here to Search a Category" class="input input-bordered input-info w-11/12 max-w mb-5  fixed  z-40" />
+</div>
+<div class="h-20"></div>
+<div class="flex flex-wrap  justify-center gap-y-8 gap-x-2 w-full ">
+
+
+<div *ngFor="let category of filteredCategories" class="z-0 " >
+    <div class="card w-96 glass z-0 h-96">
+        <figure><img src="{{category.image}}" alt="car!"/></figure>
+        <div class="card-body">
+          <h2 class="card-title">{{category.name}}</h2>
+          <div class="flex">
+            <p>Price: {{category.price | currency}}</p>
+          <p>On Stock: {{category.stock}}</p>
+          </div>
+          
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary" routerLink="edit/{{category.id}}" *ngIf="isEdit">Edit</button>
+            <button class="btn btn-primary" routerLink="{{category.id}}" *ngIf="!isEdit">Details</button>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+<button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-20 right-10"
+    (click)="isEdit = !isEdit">
+    Edit Categories</button>
+
+<ng-template #selectCat>
+
+    <button *ngIf="isEdit" #selectCat class="btn btn-secondary w-38 mt-10 fixed bottom-20 right-10"
+        (click)="isEdit = !isEdit">
+        Select Categories</button>
+
+</ng-template>

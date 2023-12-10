@@ -8,13 +8,13 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { ProductComponent } from './pages/product/products/product.component';
 import { CategoriesComponent } from './pages/category/categories/categories.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { CategoryDetailComponent } from './pages/category/category-detail/category-detail.component';
-import { CategoryCreateComponent } from './pages/category/category-create/category-create.component';
-import { CategoryEditComponent } from './pages/category/category-edit/category-edit.component';
+import { CategoryDetailComponent } from './pages/category/products-category/category-detail.component';
+import { CategoryCreateComponent } from './pages/category/category-create-edit/category-create.component';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './pages/product/product-create/product-create.component';
-import { ProductEditComponent } from './pages/product-edit/product-edit.component';
+import { ProductEditComponent } from './pages/product/product-edit/product-edit.component';
 import { ImpressumComponent } from './pages/impressum/impressum.component';
+import { adminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -51,14 +51,17 @@ const routes: Routes = [
       {
         path: 'create',
         component: CategoryCreateComponent,
+        canActivate: [adminGuard],
       },
       {
         path: 'edit/:id',
-        component: CategoryEditComponent,
+        component: CategoryCreateComponent,
+        canActivate: [adminGuard],
       },
       {
-        path: ':id',
+        path: ':id/products',
         component: CategoryDetailComponent,
+
       },
     ],
   },

@@ -1,23 +1,8 @@
 <div class="content">
-  <main>
-    <!-- Shows siderbar with router-outlet when isSideBar true  -->
-    <div class="test-bar" *ngIf="isSideBar">
-      <pm-header (newItemEvent)="addIsSideBar($event)"></pm-header>
-
-      <mat-drawer-container class="example-container">
-        <mat-drawer mode="side" opened class="sidebar">Drawer content</mat-drawer>
-        <mat-drawer-content>
-          <router-outlet></router-outlet>
-        </mat-drawer-content>
-      </mat-drawer-container>
+<main>
+      <pm-header (newItemEvent)="addIsSideBar($event)" class="mb-72 "></pm-header>
+  <div class="h-8"></div>
+      <router-outlet ></router-outlet>
       <pm-footer></pm-footer>
-    </div>
-    <!-- shows router-outlet when isSidebar false  -->
-    <div *ngIf="!isSideBar">
-      <pm-header (newItemEvent)="addIsSideBar($event)"></pm-header>
 
-      <router-outlet></router-outlet>
-    </div>
   </main>
-  <pm-footer></pm-footer>
-</div>

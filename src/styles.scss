@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 // Global styles defined here will be available to all components important need to import with @use 'relativePath from used destination' as styles;
 $primary-color: rgb(103, 58, 183);
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html, body { height: 100%; }
 body { 
     margin: 0; 

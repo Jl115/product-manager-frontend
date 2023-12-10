@@ -9,7 +9,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserControllerService } from 'src/app/openapi-client/api/api';
 import { LoginRequestDto } from 'src/app/openapi-client/model/loginRequestDto';
 
@@ -37,7 +37,10 @@ export class LoginComponent {
     Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$')
 
   ]);
-  constructor(private userControllerService: UserControllerService) {}
+  constructor(
+    private userControllerService: UserControllerService,
+    private router: Router,
+    ) {}
 
   getErrorMessage(type: string) {
     if (type === 'mail' || type === 'email') {
@@ -62,7 +65,10 @@ export class LoginComponent {
         response => {
           console.log('Login successful', response);
           localStorage.setItem('ACCESS_TOKEN', response.token!);
-          // Erfolgslogik
+          
+          this.router.navigate(['/']).then(() => {
+            window.location.reload();
+          });
         },
         error => {
           console.error('Login failed', error);
