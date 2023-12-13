@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryControllerService } from 'src/app/openapi-client';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'pm-category-create',
@@ -75,11 +76,27 @@ export class CategoryCreateComponent implements OnInit {
     }
   }
   delete() {
-    this.categoryControllerService.deleteCategoryById(this.categoryId!).subscribe(
-      category => {
-        console.log('Category deleted:', category);
-        this.router.navigate(['/categories']);
-      },
-    );
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+        this.categoryControllerService.deleteCategoryById(this.categoryId!).subscribe(
+          category => {
+            
+            console.log('Category deleted:', category);
+            this.router.navigate(['/categories']);
+          },
+        );
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+    
     }
 }

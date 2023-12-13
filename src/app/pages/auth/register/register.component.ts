@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { UserControllerService } from 'src/app/openapi-client/api/api';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'pm-register',
@@ -51,9 +52,22 @@ export class RegisterComponent {
   
       this.userControllerService.register(this.registerForm.value).subscribe(
         user => {
-          console.log('Server response:', user);
+          Swal.fire({
+            title: 'Registration successful',
+            text: 'You can now log in',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+          setTimeout(() => {
+
+            console.log('Server response:', user);
+            this.isError = false;
+          }
+          , 2000);
+
           
-          this.isError = false;
+          
+
         },
         error => {
           console.error('Error during registration:', error);
