@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
           }
         }));
       }
-        this.router.navigate(['/auth/login']);
+        // this.router.navigate(['/auth/login']);
         return next.handle(req);
       } 
       private isTokenValid(token: string): boolean {

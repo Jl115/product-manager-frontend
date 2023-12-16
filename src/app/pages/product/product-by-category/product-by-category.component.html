@@ -9,9 +9,9 @@
 <div class="h-20"></div> <!-- Spacer div -->
 <div class="flex flex-wrap  justify-center gap-y-8 gap-x-2 w-full ">
     <!-- Loop through filteredCategories to display each category -->
-    <div *ngFor="let category of filteredCategories" class="z-0 flex flex-wrap  justify-center gap-y-8 gap-x-2 w-full " >
+    <div *ngFor="let category of filteredCategories " class="z-0 flex flex-wrap  justify-center gap-y-8 gap-x-2 w-full " >
         <!-- Nested loop to display products in each category -->
-        <div *ngFor="let product of category.products" class="z-0">
+        <div *ngFor="let product of filterProductsInCategory(category, searchText)" class="z-0">
             <div class="card w-96 glass z-0 h-96">
                 <figure><img src="{{product.image}}" alt="car!"/></figure> <!-- Product image -->
                 <div class="card-body">

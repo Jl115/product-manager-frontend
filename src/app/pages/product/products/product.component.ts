@@ -9,7 +9,7 @@ import {
   FormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { NavigationEnd, RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'pm-product',
@@ -20,12 +20,18 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductComponent {
   categories: ProductShowDto[] = [];
-  filteredCategories: ProductShowDto[] = [];
+  filteredProducts: ProductShowDto[] = [];
   isLoading: boolean = false;
   isEdit: boolean = false;
   searchText: string = '';
 
-  constructor(private productControllerService: ProductControllerService) {}
+  constructor(private productControllerService: ProductControllerService, private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        console.log('Navigated to:', event.url);
+      }
+  })
+}
 
   ngOnInit() {
     this.isLoading = true;
@@ -39,7 +45,7 @@ export class ProductComponent {
     this.productControllerService.getAllProducts().subscribe(
       (categories) => {
         this.categories = categories;
-        this.filteredCategories = categories;
+        this.filteredProducts = categories;
         this.isLoading = false;
         console.log(categories);
       },
@@ -50,7 +56,7 @@ export class ProductComponent {
     );
   }
   onSearch() {
-    this.filteredCategories = this.searchText
+    this.filteredProducts = this.searchText
       ? this.categories.filter((category) =>
           category.name.toLowerCase().includes(this.searchText.toLowerCase())
         )

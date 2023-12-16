@@ -9,12 +9,7 @@ import { UserControllerService, CategoryControllerService, ProductControllerServ
 })
 export class AppComponent {
   title = 'product-manager-frontend';
-  isSideBar = false;
 
-  addIsSideBar(isSideBar: boolean) {
-    this.isSideBar = isSideBar;
-    console.log(this.isSideBar);
-  }
 
   constructor(
     private readonly userControllerService: UserControllerService,

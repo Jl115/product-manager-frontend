@@ -1,16 +1,20 @@
 <div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">
-    <span class="loading loading-spinner h-28 w-28"></span>
+    <span class="loading loading-infinity  w-28 h-28 bg-primary"></span>
 </div>
 
 <div class="flex w-full justify-center items-center ">
-    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Type here to Search a Category" class="input input-bordered input-info w-11/12 max-w mt-8  fixed  z-40" />
-    </div>
-    <div class="h-20"></div>
-    <div class="flex flex-col w-full justify-center ">
-<div *ngFor="let category of filteredCategories" class="flex justify-center">
-    <button *ngIf="isEdit" class="btn glass w-11/12 mt-2 " routerLink="edit/{{category.id}}" >{{category.name}}</button>
-    <button *ngIf="!isEdit" class="btn glass w-11/12 mt-2 " routerLink="{{category.id}}/products">{{category.name}}</button>
+    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()"
+        placeholder="Type here to Search a Category"
+        class="input input-bordered input-info w-11/12 max-w mt-8  fixed  z-40" />
 </div>
+<div class="h-20"></div>
+<div class="flex flex-col w-full justify-center ">
+    <div *ngFor="let category of filteredCategories" class="flex justify-center">
+        <button *ngIf="isEdit" class="btn glass w-11/12 mt-2 "
+            routerLink="edit/{{category.id}}">{{category.name}}</button>
+        <button *ngIf="!isEdit" class="btn glass w-11/12 mt-2 "
+            routerLink="{{category.id}}/products">{{category.name}}</button>
+    </div>
 </div>
 <button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-20 right-10"
     (click)="isEdit = !isEdit">

@@ -23,20 +23,14 @@ export class HeaderComponent implements OnChanges{
 
 @Output() newItemEvent = new EventEmitter<boolean>();
 isLogin: boolean = false;
-name: string = "test";
+name: string = "Login";
 isEnter: boolean = false;
-
-addIsSideBar(isSideBar: boolean) {
-  this.newItemEvent.emit(isSideBar);
-}
-
-
-
 
 
 constructor(
   private renderer: Renderer2,
   ) { }
+
   ngOnChanges(changes: SimpleChanges): void {
     console.log("ngOnChanges");
   }
@@ -44,10 +38,10 @@ constructor(
     try {
       const token = localStorage.getItem('ACCESS_TOKEN');
       if (token) {
-        const payload: any = jwtDecode(token); // Dekodieren Sie das Token
-        if (payload.email) { // Überprüfen Sie, ob die E-Mail-Adresse im Payload vorhanden ist
-          this.name = payload.email; // Speichern Sie die E-Mail-Adresse
-          this.isLogin = true; // Setzen Sie isLogin auf true, wenn das Token gültig ist
+        const payload: any = jwtDecode(token); 
+        if (payload.email) { 
+          this.name = payload.email; 
+          this.isLogin = true; 
         }
       } else {
         this.isLogin = false;

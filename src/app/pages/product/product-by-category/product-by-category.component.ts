@@ -1,7 +1,8 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, NgModule, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryControllerService } from 'src/app/openapi-client/api/categoryController.service';
 import { CategoryDetailDto, CategoryShowDto, ProductShowDto } from 'src/app/openapi-client';
+
 import {
   FormControl,
   FormGroup,
@@ -14,7 +15,7 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'pm-product-by-category',
   standalone: true,
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule, ],
   templateUrl: './product-by-category.component.html',
   styleUrl: './product-by-category.component.scss',
 })
@@ -31,7 +32,7 @@ export class ProductByCategoryComponent {
   searchText: string = '';
 
   // Injecting the CategoryControllerService for API calls
-  constructor(private categoryControllerService: CategoryControllerService, private activatedRoute: ActivatedRoute) {}
+  constructor(private categoryControllerService: CategoryControllerService, private activatedRoute: ActivatedRoute, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     // Fetches category ID from route params
@@ -63,13 +64,29 @@ export class ProductByCategoryComponent {
   }
 
   onSearch() {
+    console.log('Suchtext:', this.searchText);
+    const searchLower = this.searchText.trim().toLowerCase();
+  
     this.filteredCategories = this.searchText
-      ? this.categories.filter(category => 
-          category.products.some(product => 
-            product.name.toLowerCase().includes(this.searchText.toLowerCase())
-          )
-        )
+      ? this.categories.filter(category => {
+          const matchingProducts = category.products.filter(product => 
+            product.name.toLowerCase().includes(searchLower) 
+          );
+          console.log('Passende Produkte in Kategorie:', category.name, matchingProducts);
+          return matchingProducts.length > 0;
+        })
       : this.categories;
-}
+      this.cdr.detectChanges();
+    console.log('Gefilterte Kategorien:', this.filteredCategories);
+  }
+  
+  filterProductsInCategory(category: { products: any[]; }, searchText: string) {
+    if (!searchText) return category.products;
+    return category.products.filter(product =>
+      product.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+  }
+  
+  
 
 }
