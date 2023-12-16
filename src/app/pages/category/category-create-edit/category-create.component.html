@@ -1,6 +1,10 @@
-<div class=" flex flex-col justify-center items-center h-5/6">
+<!-- Main Container -->
+<div class="flex flex-col justify-center items-center h-5/6">
+  <!-- Form Container with Background -->
   <div class="bg-primary w-6/12 rounded-xl h-64">
+    <!-- Form Definition -->
     <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+      <!-- Dynamic Title: Create or Edit based on isEdit -->
       <div *ngIf="!isEdit; else elseEdit">
         <h1 class="flex justify-center">Create a Category</h1>
       </div>
@@ -8,14 +12,19 @@
         <h1 class="flex justify-center">Edit Category</h1>
       </ng-template>
 
+      <!-- Input Fields and Controls -->
       <div class="flex flex-col justify-center items-center">
+        <!-- Category Name Input -->
         <input type="text" placeholder="Type here" formControlName="categoryName"
-          class="input input-bordered input-primary w-full max-w-xs justify-center flex" />
+               class="input input-bordered input-primary w-full max-w-xs justify-center flex" />
+        
+        <!-- Toggle for Active Status -->
         <div class="flex flex-col">
           <div class="flex flex-col w-100 justify-center items-center">
             <div class="flex items-center">
               <span class="label-text mt-5">Is Active ?</span>
             </div>
+            <!-- Toggle Switch for Active Status -->
             <div class="form-control w-52">
               <label class="cursor-pointer label">
                 no
@@ -23,20 +32,20 @@
                 yes
               </label>
             </div>
+
+            <!-- Dynamic Button: Create or Update based on isEdit -->
             <div *ngIf="!isEdit; else elseDelete">
               <button class="btn btn-secondary" type="submit">Create</button>
             </div>
             <ng-template #elseDelete>
-
-                <button class="btn btn-secondary mt-3" type="submit">Update</button>
-
+              <button class="btn btn-secondary mt-3" type="submit">Update</button>
             </ng-template>
           </div>
         </div>
       </div>
     </form>
-
   </div>
+
+  <!-- Delete Button Visible in Edit Mode -->
   <button class="btn btn-secondary w-6/12 mt-10" (click)="delete()" *ngIf="isEdit">Delete</button>
 </div>
-

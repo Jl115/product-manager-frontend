@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home/home.component';
-import { TestComponent } from './pages/test/test.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ProductComponent } from './pages/product/products/product.component';
 import { CategoriesComponent } from './pages/category/categories/categories.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-
 import { CategoryCreateComponent } from './pages/category/category-create-edit/category-create.component';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './pages/product/product-create/product-create.component';
@@ -17,80 +14,84 @@ import { ImpressumComponent } from './pages/impressum/impressum.component';
 import { adminGuard } from './guards/admin.guard';
 import { ProductByCategoryComponent } from './pages/product/product-by-category/product-by-category.component';
 
+
+
+// Routes configuration
 const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
-    title: 'Home',
+    path: '', // Default route
+    component: HomeComponent, // HomeComponent is displayed for the default route
+    title: 'Home', // Title for the route
   },
   {
-  path: 'impressum',
-  component: ImpressumComponent,
+    path: 'impressum', // Impressum route
+    component: ImpressumComponent, // ImpressumComponent for displaying legal information
   },
-  // Authentifications routes
+  // Authentication routes
   {
-    path: 'auth',
+    path: 'auth', // Base path for authentication routes
     children: [
       {
-        path: 'login',
-        component: LoginComponent,
+        path: 'login', // Route for login
+        component: LoginComponent, // LoginComponent for the login page
       },
       {
-        path: 'register',
-        component: RegisterComponent,
+        path: 'register', // Route for registration
+        component: RegisterComponent, // RegisterComponent for the registration page
       },
     ],
   },
+  // Category routes
   {
-    path: 'categories',
+    path: 'categories', // Base path for category routes
     children: [
       {
-        path: '',
-        component: CategoriesComponent,
-      },
-      
-      {
-        path: 'create',
-        component: CategoryCreateComponent,
-        canActivate: [adminGuard],
+        path: '', // Default route under categories
+        component: CategoriesComponent, // CategoriesComponent displays all categories
       },
       {
-        path: 'edit/:id',
-        component: CategoryCreateComponent,
-        canActivate: [adminGuard],
+        path: 'create', // Route for creating a category
+        component: CategoryCreateComponent, // Component to create or edit a category
+        canActivate: [adminGuard], // Protected by adminGuard to restrict access
       },
       {
-        path: ':id/products',
-        component: ProductByCategoryComponent,
-
+        path: 'edit/:id', // Route for editing a specific category
+        component: CategoryCreateComponent, // Reuses the CategoryCreateComponent for editing
+        canActivate: [adminGuard], // Restricted access by adminGuard
+      },
+      {
+        path: ':id/products', // Route to list products by category
+        component: ProductByCategoryComponent, // Component to display products for a specific category
       },
     ],
   },
+  // Product routes
   {
-    path: 'products',
+    path: 'products', // Base path for product routes
     children: [
       {
-        path: '',
-        component: ProductComponent,
+        path: '', // Default route under products
+        component: ProductComponent, // Displays all products
       },
       {
-        path: 'create',
-        component: ProductCreateComponent,
+        path: 'create', // Route for creating a product
+        component: ProductCreateComponent, // Component for creating a product
       },
       {
-        path: 'edit/:id',
-        component: ProductEditComponent,
+        path: 'edit/:id', // Route for editing a specific product
+        component: ProductEditComponent, // Component for editing a product
       },
       {
-        path: ':id',
-        component: ProductDetailComponent,
+        path: ':id', // Route for viewing product details
+        component: ProductDetailComponent, // Component for displaying product details
       },
     ],
   },
-
-  { path: '**', component: PageNotFoundComponent },
+  // Fallback route for unmatched paths
+  { path: '**', component: PageNotFoundComponent }, // PageNotFoundComponent displayed for unknown routes
 ];
 
+// Angular Routing Module for the application
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

@@ -1,48 +1,63 @@
 <div>
+  <!-- A material card component is used as a container for the form -->
   <mat-card>
     <mat-card-content>
+      <!-- The form is bound to the 'registerForm' FormGroup object in the component class -->
       <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+        <!-- Each mat-form-field represents a form control where users can input data -->
+
+        <!-- Input field for First Name -->
         <mat-form-field>
           <input matInput placeholder="First Name" formControlName="firstName" required>
         </mat-form-field>
 
+        <!-- Input field for Last Name -->
         <mat-form-field>
           <input matInput placeholder="Last Name" formControlName="lastName" required>
         </mat-form-field>
 
+        <!-- Input field for Street -->
         <mat-form-field>
           <input matInput placeholder="Street" formControlName="street" required>
         </mat-form-field>
 
+        <!-- Input field for ZIP -->
         <mat-form-field>
           <input matInput placeholder="ZIP" formControlName="zip" required>
         </mat-form-field>
 
+        <!-- Input field for City -->
         <mat-form-field>
           <input matInput placeholder="City" formControlName="city" required>
         </mat-form-field>
 
+        <!-- Input field for Country -->
         <mat-form-field>
           <input matInput placeholder="Country" formControlName="country" required>
         </mat-form-field>
 
+        <!-- Input field for Phone with validation for length -->
         <mat-form-field>
           <input matInput placeholder="Phone" formControlName="phone" maxlength="15" minlength="0" type="tel">
         </mat-form-field>
 
+        <!-- Input field for Mobile Phone with validation for length -->
         <mat-form-field>
-          <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" maxlength="15" minlength="0"
-            type="tel">
+          <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" maxlength="15" minlength="0" type="tel">
         </mat-form-field>
 
+        <!-- Input field for Email with type email -->
         <mat-form-field>
           <input matInput placeholder="Email" formControlName="email" required type="email">
         </mat-form-field>
 
+        <!-- Input field for Password with type password -->
         <mat-form-field>
           <input matInput placeholder="Password" formControlName="password" required type="password">
         </mat-form-field>
 
+        <!-- Submit button for the form -->
         <button mat-raised-button color="primary" type="submit">Register</button>
       </form>
     </mat-card-content>
