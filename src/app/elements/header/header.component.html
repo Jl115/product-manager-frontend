@@ -2,24 +2,28 @@
   <!-- The header tag defines the top section of the webpage; styled to be sticky, full width, centered, and of a certain height -->
   <div class="navbar bg-primary rounded-xl fixed w-11/12">
     <!-- A div for the navbar, with background color, rounded corners, fixed position, and width slightly less than full -->
-    <div class="flex-1">
+    <div class="flex-1 gap-64">
       <!-- Container for the logo or title of the website; flex-1 makes it expand to fill available space -->
-      <a class="btn btn-ghost text-xl" routerLink="">Shop.com</a>
+      <a class="btn btn-ghost text-xl " routerLink="">Shop.com</a>
       <!-- A link representing the brand or title of the website, styled as a large text button -->
+
     </div>
+
     <div class="flex-none">
       <!-- Container for navigation items; flex-none prevents it from expanding -->
       <ul class="menu menu-horizontal px-1" (mouseenter)="isEnter = true">
         <!-- An unordered list for navigation links, styled horizontally with padding; on mouseenter, sets a variable isEnter to true -->
+
         <li>
           <!-- List item for a dropdown menu -->
-          <details #categories (mouseenter)="toggleDetails(categories, true)" >
+          <details #categories (mouseenter)="toggleDetails(categories, true)">
             <!-- The details tag creates a dropdown; #categories is a template reference variable; on mouseenter, calls toggleDetails function -->
             <summary>Categories</summary> <!-- The summary tag provides a visible header for the dropdown -->
             <ul class="p-2 bg-base-100 rounded-t-none z-50" (mouseleave)="toggleDetails(categories, false)">
               <!-- Nested unordered list for dropdown items; on mouseleave, calls toggleDetails function -->
               <li class="z-50"><a routerLink="categories">Categories</a></li> <!-- Dropdown item with a router link -->
-              <li class="z-50"><a routerLink="categories/create">Create</a></li> <!-- Another dropdown item with a router link -->
+              <li *ngIf="isAdmin" class="z-50"><a routerLink="categories/create">Create</a></li>
+              <!-- Another dropdown item with a router link -->
             </ul>
           </details>
         </li>
@@ -29,13 +33,23 @@
             <summary>Products</summary>
             <ul class="p-2 bg-base-100 rounded-t-none" (mouseleave)="toggleDetails(products, false)">
               <li><a routerLink="products/">Products</a></li>
-              <li><a routerLink="products/create">Create</a></li>
+              <li *ngIf="isAdmin"><a routerLink="products/create">Create</a></li>
+            </ul>
+          </details>
+        </li>
+
+        <li *ngIf="isLogin">
+          <details #login (mouseenter)="toggleDetails(login, true)">
+            <summary *ngIf="isLogin">{{name}}</summary>
+            <summary *ngIf="!isLogin">Login</summary>
+            <ul class="p-2 bg-base-100 rounded-t-none" (mouseleave)="toggleDetails(login, false)">
+              <li *ngIf="isAdmin"><a routerLink="admin">Show all User</a></li>
+
             </ul>
           </details>
         </li>
         <li>
-          <a routerLink="auth/login" *ngIf="!isLogin">Login</a> <!-- A conditional link that displays if isLogin is false -->
-          <a routerLink="test" *ngIf="isLogin">{{name}}</a> <!-- A conditional link displaying the user's name if isLogin is true -->
+          <a routerLink="auth/login" *ngIf="!isLogin">Login</a>
         </li>
       </ul>
     </div>

@@ -263,7 +263,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -354,8 +354,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="78"
-                                    class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:78</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -391,8 +391,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -428,8 +428,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:53</a></div>
                         </td>
                     </tr>
 
@@ -470,7 +470,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -501,7 +501,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -532,7 +532,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/category/category-create-edit/category-create.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -552,27 +552,29 @@ import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
 import { CategoryControllerService } from &#x27;src/app/openapi-client&#x27;;
 import Swal from &#x27;sweetalert2&#x27;;
 
+// Angular Component for creating and editing categories.
 @Component({
-  selector: &#x27;pm-category-create&#x27;,
-  templateUrl: &#x27;./category-create.component.html&#x27;,
-  standalone: true,
-  imports: [
+  selector: &#x27;pm-category-create&#x27;,   // Component&#x27;s custom HTML tag.
+  templateUrl: &#x27;./category-create.component.html&#x27;, // HTML template file.
+  standalone: true,  // Indicates that the component is standalone.
+  imports: [         // Required modules for this component.
     ReactiveFormsModule, 
     CommonModule
   ],
-  styleUrls: [&#x27;./category-create.component.scss&#x27;]
+  styleUrls: [&#x27;./category-create.component.scss&#x27;] // CSS styles for this component.
 })
 export class CategoryCreateComponent implements OnInit {
 
-  categoryForm: FormGroup;
-  isEdit: boolean &#x3D; false;
-  categoryId: number | null &#x3D; null;
+  categoryForm: FormGroup;    // FormGroup to handle the category form.
+  isEdit: boolean &#x3D; false;    // Flag to determine if the mode is edit or create.
+  categoryId: number | null &#x3D; null; // Stores the ID of the category being edited.
 
   constructor(
-    private categoryControllerService: CategoryControllerService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
+    private categoryControllerService: CategoryControllerService, // Service for category operations.
+    private router: Router,              // Angular Router for navigation.
+    private activatedRoute: ActivatedRoute // Service to access route parameters.
   ) {
+    // Initializing the category form with validators.
     this.categoryForm &#x3D; new FormGroup({
       categoryName: new FormControl(&#x27;&#x27;, [Validators.required, Validators.minLength(3)]),
       isActive: new FormControl(true)
@@ -580,9 +582,11 @@ export class CategoryCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Checks if an ID is passed in the route, indicating edit mode.
     const categoryId &#x3D; this.activatedRoute.snapshot.params[&#x27;id&#x27;];
     if (categoryId) {
-      this.isEdit &#x3D; true;
+      this.isEdit &#x3D; true; // Set edit mode.
+      // Fetch category details and populate the form.
       this.categoryControllerService.getCategoryById(categoryId).subscribe(category &#x3D;&gt; {
         this.categoryForm.patchValue({
           categoryName: category.name,
@@ -596,33 +600,36 @@ export class CategoryCreateComponent implements OnInit {
   onSubmit() {
     if (this.categoryForm.valid) {
       if (this.isEdit &amp;&amp; this.categoryId) {
-        // Update existing category
+        // Update existing category.
         this.categoryControllerService.updateCategoryById(this.categoryId, {
           name: this.categoryForm.value.categoryName,
           active: this.categoryForm.value.isActive
         }).subscribe(
           category &#x3D;&gt; {
             console.log(&#x27;Category updated:&#x27;, category);
-            this.router.navigate([&#x27;/categories&#x27;]);
+            this.router.navigate([&#x27;/categories&#x27;]); // Navigate to categories list.
           },
           error &#x3D;&gt; console.error(&#x27;Error updating category:&#x27;, error)
         );
       } else {
-        // Create new category
+        // Create new category.
         this.categoryControllerService.createCategory({
           name: this.categoryForm.value.categoryName,
           active: this.categoryForm.value.isActive
         }).subscribe(
           category &#x3D;&gt; {
             console.log(&#x27;Category created:&#x27;, category);
-            this.router.navigate([&#x27;/categories&#x27;]);
+            this.router.navigate([&#x27;/categories&#x27;]); // Navigate to categories list.
           },
           error &#x3D;&gt; console.error(&#x27;Error creating category:&#x27;, error)
         );
       }
     }
   }
+
+  // Method to delete a category.
   delete() {
+    // Confirmation dialog using SweetAlert2.
     Swal.fire({
       title: &quot;Do you want to save the changes?&quot;,
       showDenyButton: true,
@@ -630,30 +637,32 @@ export class CategoryCreateComponent implements OnInit {
       confirmButtonText: &quot;Save&quot;,
       denyButtonText: &#x60;Don&#x27;t save&#x60;
     }).then((result) &#x3D;&gt; {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         Swal.fire(&quot;Saved!&quot;, &quot;&quot;, &quot;success&quot;);
+        // Delete the category if confirmed.
         this.categoryControllerService.deleteCategoryById(this.categoryId!).subscribe(
           category &#x3D;&gt; {
-            
             console.log(&#x27;Category deleted:&#x27;, category);
-            this.router.navigate([&#x27;/categories&#x27;]);
+            this.router.navigate([&#x27;/categories&#x27;]); // Navigate to categories list.
           },
         );
       } else if (result.isDenied) {
         Swal.fire(&quot;Changes are not saved&quot;, &quot;&quot;, &quot;info&quot;);
       }
     });
-    
-    }
+  }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot; flex flex-col justify-center items-center h-5/6&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Main Container --&gt;
+&lt;div class&#x3D;&quot;flex flex-col justify-center items-center h-5/6&quot;&gt;
+  &lt;!-- Form Container with Background --&gt;
   &lt;div class&#x3D;&quot;bg-primary w-6/12 rounded-xl h-64&quot;&gt;
+    &lt;!-- Form Definition --&gt;
     &lt;form [formGroup]&#x3D;&quot;categoryForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+      &lt;!-- Dynamic Title: Create or Edit based on isEdit --&gt;
       &lt;div *ngIf&#x3D;&quot;!isEdit; else elseEdit&quot;&gt;
         &lt;h1 class&#x3D;&quot;flex justify-center&quot;&gt;Create a Category&lt;/h1&gt;
       &lt;/div&gt;
@@ -661,14 +670,19 @@ export class CategoryCreateComponent implements OnInit {
         &lt;h1 class&#x3D;&quot;flex justify-center&quot;&gt;Edit Category&lt;/h1&gt;
       &lt;/ng-template&gt;
 
+      &lt;!-- Input Fields and Controls --&gt;
       &lt;div class&#x3D;&quot;flex flex-col justify-center items-center&quot;&gt;
+        &lt;!-- Category Name Input --&gt;
         &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Type here&quot; formControlName&#x3D;&quot;categoryName&quot;
-          class&#x3D;&quot;input input-bordered input-primary w-full max-w-xs justify-center flex&quot; /&gt;
+               class&#x3D;&quot;input input-bordered input-primary w-full max-w-xs justify-center flex&quot; /&gt;
+        
+        &lt;!-- Toggle for Active Status --&gt;
         &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
           &lt;div class&#x3D;&quot;flex flex-col w-100 justify-center items-center&quot;&gt;
             &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
               &lt;span class&#x3D;&quot;label-text mt-5&quot;&gt;Is Active ?&lt;/span&gt;
             &lt;/div&gt;
+            &lt;!-- Toggle Switch for Active Status --&gt;
             &lt;div class&#x3D;&quot;form-control w-52&quot;&gt;
               &lt;label class&#x3D;&quot;cursor-pointer label&quot;&gt;
                 no
@@ -676,23 +690,23 @@ export class CategoryCreateComponent implements OnInit {
                 yes
               &lt;/label&gt;
             &lt;/div&gt;
+
+            &lt;!-- Dynamic Button: Create or Update based on isEdit --&gt;
             &lt;div *ngIf&#x3D;&quot;!isEdit; else elseDelete&quot;&gt;
               &lt;button class&#x3D;&quot;btn btn-secondary&quot; type&#x3D;&quot;submit&quot;&gt;Create&lt;/button&gt;
             &lt;/div&gt;
             &lt;ng-template #elseDelete&gt;
-
-                &lt;button class&#x3D;&quot;btn btn-secondary mt-3&quot; type&#x3D;&quot;submit&quot;&gt;Update&lt;/button&gt;
-
+              &lt;button class&#x3D;&quot;btn btn-secondary mt-3&quot; type&#x3D;&quot;submit&quot;&gt;Update&lt;/button&gt;
             &lt;/ng-template&gt;
           &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/form&gt;
-
   &lt;/div&gt;
+
+  &lt;!-- Delete Button Visible in Edit Mode --&gt;
   &lt;button class&#x3D;&quot;btn btn-secondary w-6/12 mt-10&quot; (click)&#x3D;&quot;delete()&quot; *ngIf&#x3D;&quot;isEdit&quot;&gt;Delete&lt;/button&gt;
 &lt;/div&gt;
-
 </code></pre>
     </div>
 
@@ -728,8 +742,8 @@ export class CategoryCreateComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class=" flex flex-col justify-center items-center h-5/6">  <div class="bg-primary w-6/12 rounded-xl h-64">    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">      <div *ngIf="!isEdit; else elseEdit">        <h1 class="flex justify-center">Create a Category</h1>      </div>      <ng-template #elseEdit>        <h1 class="flex justify-center">Edit Category</h1>      </ng-template>      <div class="flex flex-col justify-center items-center">        <input type="text" placeholder="Type here" formControlName="categoryName"          class="input input-bordered input-primary w-full max-w-xs justify-center flex" />        <div class="flex flex-col">          <div class="flex flex-col w-100 justify-center items-center">            <div class="flex items-center">              <span class="label-text mt-5">Is Active ?</span>            </div>            <div class="form-control w-52">              <label class="cursor-pointer label">                no                <input type="checkbox" class="toggle toggle-info" formControlName="isActive" />                yes              </label>            </div>            <div *ngIf="!isEdit; else elseDelete">              <button class="btn btn-secondary" type="submit">Create</button>            </div>            <ng-template #elseDelete>                <button class="btn btn-secondary mt-3" type="submit">Update</button>            </ng-template>          </div>        </div>      </div>    </form>  </div>  <button class="btn btn-secondary w-6/12 mt-10" (click)="delete()" *ngIf="isEdit">Delete</button></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'ImpressumComponent', 'selector': 'pm-impressum'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'},{'name': 'TestComponent', 'selector': 'pm-test'}];
+        var COMPONENT_TEMPLATE = '<div><!-- Main Container --><div class="flex flex-col justify-center items-center h-5/6">  <!-- Form Container with Background -->  <div class="bg-primary w-6/12 rounded-xl h-64">    <!-- Form Definition -->    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">      <!-- Dynamic Title: Create or Edit based on isEdit -->      <div *ngIf="!isEdit; else elseEdit">        <h1 class="flex justify-center">Create a Category</h1>      </div>      <ng-template #elseEdit>        <h1 class="flex justify-center">Edit Category</h1>      </ng-template>      <!-- Input Fields and Controls -->      <div class="flex flex-col justify-center items-center">        <!-- Category Name Input -->        <input type="text" placeholder="Type here" formControlName="categoryName"               class="input input-bordered input-primary w-full max-w-xs justify-center flex" />                <!-- Toggle for Active Status -->        <div class="flex flex-col">          <div class="flex flex-col w-100 justify-center items-center">            <div class="flex items-center">              <span class="label-text mt-5">Is Active ?</span>            </div>            <!-- Toggle Switch for Active Status -->            <div class="form-control w-52">              <label class="cursor-pointer label">                no                <input type="checkbox" class="toggle toggle-info" formControlName="isActive" />                yes              </label>            </div>            <!-- Dynamic Button: Create or Update based on isEdit -->            <div *ngIf="!isEdit; else elseDelete">              <button class="btn btn-secondary" type="submit">Create</button>            </div>            <ng-template #elseDelete>              <button class="btn btn-secondary mt-3" type="submit">Update</button>            </ng-template>          </div>        </div>      </div>    </form>  </div>  <!-- Delete Button Visible in Edit Mode -->  <button class="btn btn-secondary w-6/12 mt-10" (click)="delete()" *ngIf="isEdit">Delete</button></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CategoryCreateComponent'};
 </script>

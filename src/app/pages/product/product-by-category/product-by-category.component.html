@@ -23,7 +23,7 @@
       <div *ngFor="let product of filterProductsInCategory(category, searchText)" class="z-0">
         <div class="card w-96 glass z-0 h-96">
           <!-- Product Image -->
-          <figure><img src="{{product.image}}" alt="Product Image"/></figure>
+          <figure class="h-52"><img src="{{product.image}}" alt="Product Image"/></figure>
           <!-- Product Details -->
           <div class="card-body">
             <h2 class="card-title">{{product.name}}</h2> <!-- Product name -->

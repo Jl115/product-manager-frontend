@@ -41,6 +41,10 @@ export class AuthInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${token}`
         }
       }));
+    } else if (token && !this.isTokenValid(token)) {
+      // Checking if the token exists but is invalid
+      this.router.navigate(['/auth/login']);
+      // Navigating to the login route if the token is not valid
     }
 
     // If the token is not valid or not present, the request is handled without modification

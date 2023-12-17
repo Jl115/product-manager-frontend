@@ -138,104 +138,107 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
-import { AppComponent } from &#x27;./app.component&#x27;;
 import { HomeComponent } from &#x27;./pages/home/home/home.component&#x27;;
-import { TestComponent } from &#x27;./pages/test/test.component&#x27;;
 import { LoginComponent } from &#x27;./pages/auth/login/login.component&#x27;;
 import { RegisterComponent } from &#x27;./pages/auth/register/register.component&#x27;;
 import { ProductComponent } from &#x27;./pages/product/products/product.component&#x27;;
 import { CategoriesComponent } from &#x27;./pages/category/categories/categories.component&#x27;;
 import { PageNotFoundComponent } from &#x27;./pages/page-not-found/page-not-found.component&#x27;;
-
 import { CategoryCreateComponent } from &#x27;./pages/category/category-create-edit/category-create.component&#x27;;
 import { ProductDetailComponent } from &#x27;./pages/product/product-detail/product-detail.component&#x27;;
 import { ProductCreateComponent } from &#x27;./pages/product/product-create/product-create.component&#x27;;
 import { ProductEditComponent } from &#x27;./pages/product/product-edit/product-edit.component&#x27;;
-import { ImpressumComponent } from &#x27;./pages/impressum/impressum.component&#x27;;
+
 import { adminGuard } from &#x27;./guards/admin.guard&#x27;;
 import { ProductByCategoryComponent } from &#x27;./pages/product/product-by-category/product-by-category.component&#x27;;
+import { AdminComponent } from &#x27;./pages/user/admin/admin.component&#x27;;
 
+
+
+// Routes configuration
 const routes: Routes &#x3D; [
   {
-    path: &#x27;&#x27;,
-    component: HomeComponent,
-    title: &#x27;Home&#x27;,
-  },
-  {
-  path: &#x27;impressum&#x27;,
-  component: ImpressumComponent,
-  },
-  // Authentifications routes
-  {
-    path: &#x27;auth&#x27;,
-    children: [
-      {
-        path: &#x27;login&#x27;,
-        component: LoginComponent,
-      },
-      {
-        path: &#x27;register&#x27;,
-        component: RegisterComponent,
-      },
-    ],
-  },
-  {
-    path: &#x27;categories&#x27;,
-    children: [
-      {
-        path: &#x27;&#x27;,
-        component: CategoriesComponent,
-      },
-      
-      {
-        path: &#x27;create&#x27;,
-        component: CategoryCreateComponent,
-        canActivate: [adminGuard],
-      },
-      {
-        path: &#x27;edit/:id&#x27;,
-        component: CategoryCreateComponent,
-        canActivate: [adminGuard],
-      },
-      {
-        path: &#x27;:id/products&#x27;,
-        component: ProductByCategoryComponent,
-
-      },
-    ],
-  },
-  {
-    path: &#x27;products&#x27;,
-    children: [
-      {
-        path: &#x27;&#x27;,
-        component: ProductComponent,
-      },
-      {
-        path: &#x27;create&#x27;,
-        component: ProductCreateComponent,
-      },
-      {
-        path: &#x27;edit/:id&#x27;,
-        component: ProductEditComponent,
-      },
-      {
-        path: &#x27;:id&#x27;,
-        component: ProductDetailComponent,
-      },
-    ],
+    path: &#x27;&#x27;, // Default route
+    component: HomeComponent, // HomeComponent is displayed for the default route
+    title: &#x27;Home&#x27;, // Title for the route
   },
 
-  { path: &#x27;**&#x27;, component: PageNotFoundComponent },
+  // Authentication routes
+  {
+    path: &#x27;auth&#x27;, // Base path for authentication routes
+    children: [
+      {
+        path: &#x27;login&#x27;, // Route for login
+        component: LoginComponent, // LoginComponent for the login page
+      },
+      {
+        path: &#x27;register&#x27;, // Route for registration
+        component: RegisterComponent, // RegisterComponent for the registration page
+      },
+    ],
+  },
+  // Category routes
+  {
+    path: &#x27;categories&#x27;, // Base path for category routes
+    children: [
+      {
+        path: &#x27;&#x27;, // Default route under categories
+        component: CategoriesComponent, // CategoriesComponent displays all categories
+      },
+      {
+        path: &#x27;create&#x27;, // Route for creating a category
+        component: CategoryCreateComponent, // Component to create or edit a category
+        canActivate: [adminGuard], // Protected by adminGuard to restrict access
+      },
+      {
+        path: &#x27;edit/:id&#x27;, // Route for editing a specific category
+        component: CategoryCreateComponent, // Reuses the CategoryCreateComponent for editing
+        canActivate: [adminGuard], // Restricted access by adminGuard
+      },
+      {
+        path: &#x27;:id/products&#x27;, // Route to list products by category
+        component: ProductByCategoryComponent, // Component to display products for a specific category
+      },
+    ],
+  },
+  {
+    path: &quot;admin&quot;,
+    component: AdminComponent,
+    canActivate: [adminGuard],
+  },
+  // Product routes
+  {
+    path: &#x27;products&#x27;, // Base path for product routes
+    children: [
+      {
+        path: &#x27;&#x27;, // Default route under products
+        component: ProductComponent, // Displays all products
+      },
+      {
+        path: &#x27;create&#x27;, // Route for creating a product
+        component: ProductCreateComponent, // Component for creating a product
+      },
+      {
+        path: &#x27;edit/:id&#x27;, // Route for editing a specific product
+        component: ProductEditComponent, // Component for editing a product
+      },
+      {
+        path: &#x27;:id&#x27;, // Route for viewing product details
+        component: ProductDetailComponent, // Component for displaying product details
+      },
+    ],
+  },
+  // Fallback route for unmatched paths
+  { path: &#x27;**&#x27;, component: PageNotFoundComponent }, // PageNotFoundComponent displayed for unknown routes
 ];
 
+// Angular Routing Module for the application
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 
 })
-export class AppRoutingModule {}
-</code></pre>
+export class AppRoutingModule {}</code></pre>
     </div>
 </div>
 

@@ -133,6 +133,12 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
 
 
 <section data-compodoc="block-metadata">
@@ -165,9 +171,9 @@
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
                             <code>CommonModule</code>
-                            <code>RouterLink</code>
                             <code>ReactiveFormsModule</code>
                             <code>FormsModule</code>
+                            <code>RouterLink</code>
                 </td>
             </tr>
 
@@ -210,7 +216,7 @@
                                 <a href="#categories" >categories</a>
                             </li>
                             <li>
-                                <a href="#filteredCategories" >filteredCategories</a>
+                                <a href="#filteredProducts" >filteredProducts</a>
                             </li>
                             <li>
                                 <a href="#isEdit" >isEdit</a>
@@ -260,7 +266,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(productControllerService: <a href="../injectables/ProductControllerService.html" target="_self">ProductControllerService</a>)</code>
+<code>constructor(productControllerService: <a href="../injectables/ProductControllerService.html" target="_self">ProductControllerService</a>, router: Router)</code>
                     </td>
                 </tr>
                         <tr>
@@ -287,6 +293,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/ProductControllerService.html" target="_self" >ProductControllerService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
                                                         </td>
                                                   
                                                     <td>
@@ -332,8 +350,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/pages/product/products/product.component.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/pages/product/products/product.component.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -369,8 +387,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/pages/product/products/product.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/pages/product/products/product.component.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -406,8 +424,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/pages/product/products/product.component.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/pages/product/products/product.component.ts:66</a></div>
                         </td>
                     </tr>
 
@@ -464,10 +482,10 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="filteredCategories"></a>
+                    <a name="filteredProducts"></a>
                     <span class="name">
-                        <span ><b>filteredCategories</b></span>
-                        <a href="#filteredCategories"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>filteredProducts</b></span>
+                        <a href="#filteredProducts"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -590,36 +608,48 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, NgModule } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ProductControllerService } from &#x27;src/app/openapi-client/api/productController.service&#x27;;
 import { ProductShowDto } from &#x27;src/app/openapi-client&#x27;;
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  FormsModule,
-  Validators,
-} from &#x27;@angular/forms&#x27;;
-import { RouterLink } from &#x27;@angular/router&#x27;;
+import { ReactiveFormsModule, FormsModule } from &#x27;@angular/forms&#x27;;
+import { NavigationEnd, Router, RouterLink } from &#x27;@angular/router&#x27;;
 
+// Angular component for managing and displaying products
 @Component({
-  selector: &#x27;pm-product&#x27;,
-  standalone: true,
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule],
-  templateUrl: &#x27;./product.component.html&#x27;,
-  styleUrls: [&#x27;./product.component.scss&#x27;],
+  selector: &#x27;pm-product&#x27;,  // Component&#x27;s custom HTML tag
+  standalone: true,       // Indicates a standalone component
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule, 
+    FormsModule,
+    RouterLink
+  ],                      // Imports necessary modules
+  templateUrl: &#x27;./product.component.html&#x27;,  // HTML template for the component
+  styleUrls: [&#x27;./product.component.scss&#x27;]   // Styles for the component
 })
-export class ProductComponent {
-  categories: ProductShowDto[] &#x3D; [];
-  filteredCategories: ProductShowDto[] &#x3D; [];
-  isLoading: boolean &#x3D; false;
-  isEdit: boolean &#x3D; false;
-  searchText: string &#x3D; &#x27;&#x27;;
+export class ProductComponent implements OnInit {
+  categories: ProductShowDto[] &#x3D; [];       // Array to store product data
+  filteredProducts: ProductShowDto[] &#x3D; []; // Array for products filtered by search
+  isLoading: boolean &#x3D; false;              // Flag to indicate if data is loading
+  isEdit: boolean &#x3D; false;                 // Flag to indicate if the component is in edit mode
+  searchText: string &#x3D; &#x27;&#x27;;                 // String to store the search text
 
-  constructor(private productControllerService: ProductControllerService) {}
+  // Constructor to inject services and dependencies
+  constructor(
+    private productControllerService: ProductControllerService,
+    private router: Router
+  ) {
+    // Subscribes to router events to log navigation ends
+    this.router.events.subscribe((event) &#x3D;&gt; {
+      if (event instanceof NavigationEnd) {
+        console.log(&#x27;Navigated to:&#x27;, event.url);
+      }
+    });
+  }
 
   ngOnInit() {
+    // Sets loading state and initiates product loading
     this.isLoading &#x3D; true;
     setTimeout(() &#x3D;&gt; {
       this.loadCategories();
@@ -627,24 +657,27 @@ export class ProductComponent {
   }
 
   loadCategories() {
+    // Fetches product data from the server and updates the component state
     this.isLoading &#x3D; true;
     this.productControllerService.getAllProducts().subscribe(
-      (categories) &#x3D;&gt; {
-        this.categories &#x3D; categories;
-        this.filteredCategories &#x3D; categories;
-        this.isLoading &#x3D; false;
-        console.log(categories);
+      (products) &#x3D;&gt; {
+        this.categories &#x3D; products; // Updates product array
+        this.filteredProducts &#x3D; products; // Updates filtered products array
+        this.isLoading &#x3D; false; // Sets loading to false after loading products
+        console.log(products);
       },
       (error) &#x3D;&gt; {
-        console.error(&#x27;Error loading categories:&#x27;, error);
+        console.error(&#x27;Error loading products:&#x27;, error);
         this.isLoading &#x3D; false;
       }
     );
   }
+
   onSearch() {
-    this.filteredCategories &#x3D; this.searchText
-      ? this.categories.filter((category) &#x3D;&gt;
-          category.name.toLowerCase().includes(this.searchText.toLowerCase())
+    // Handles product filtering based on search text
+    this.filteredProducts &#x3D; this.searchText
+      ? this.categories.filter((product) &#x3D;&gt;
+          product.name.toLowerCase().includes(this.searchText.toLowerCase())
         )
       : this.categories;
   }
@@ -653,45 +686,64 @@ export class ProductComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;isLoading&quot; class&#x3D;&quot;h-full w-full flex items-center justify-center&quot;&gt;
-    &lt;span class&#x3D;&quot;loading loading-spinner h-28 w-28&quot;&gt;&lt;/span&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Loading Indicator Section --&gt;
+&lt;div *ngIf&#x3D;&quot;isLoading&quot; class&#x3D;&quot;h-full w-full flex items-center justify-center&quot;&gt;
+  &lt;!-- Displays a loading spinner while data is being loaded or processed --&gt;
+  &lt;span class&#x3D;&quot;loading loading-infinity w-28 h-28 bg-primary&quot;&gt;&lt;/span&gt;
 &lt;/div&gt;
-&lt;div class&#x3D;&quot;flex w-full justify-center items-center &quot;&gt;
-&lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;searchText&quot; (ngModelChange)&#x3D;&quot;onSearch()&quot; placeholder&#x3D;&quot;Type here to Search a Category&quot; class&#x3D;&quot;input input-bordered input-info w-11/12 max-w mb-5  fixed  z-40&quot; /&gt;
+
+&lt;!-- Search Input Section --&gt;
+&lt;div class&#x3D;&quot;flex w-full justify-center items-center&quot;&gt;
+  &lt;!-- Input field for searching products. Uses two-way binding with searchText and calls onSearch() on model change --&gt;
+  &lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;searchText&quot; (ngModelChange)&#x3D;&quot;onSearch()&quot; 
+         placeholder&#x3D;&quot;Type here to Search a Category&quot; 
+         class&#x3D;&quot;input input-bordered input-info w-11/12 max-w mb-5 fixed z-40&quot; /&gt;
 &lt;/div&gt;
+
+&lt;!-- Spacer for Layout --&gt;
 &lt;div class&#x3D;&quot;h-20&quot;&gt;&lt;/div&gt;
-&lt;div class&#x3D;&quot;flex flex-wrap  justify-center gap-y-8 gap-x-2 w-full &quot;&gt;
 
-
-&lt;div *ngFor&#x3D;&quot;let category of filteredCategories&quot; class&#x3D;&quot;z-0 &quot; &gt;
+&lt;!-- Products Display Section --&gt;
+&lt;div class&#x3D;&quot;flex flex-wrap justify-center gap-y-8 gap-x-2 w-full min-h-full&quot;&gt;
+  &lt;!-- Loop through filteredProducts to display each product --&gt;
+  &lt;div *ngFor&#x3D;&quot;let product of filteredProducts&quot; class&#x3D;&quot;z-0&quot;&gt;
+    &lt;!-- Product Card --&gt;
     &lt;div class&#x3D;&quot;card w-96 glass z-0 h-96&quot;&gt;
-        &lt;figure&gt;&lt;img src&#x3D;&quot;{{category.image}}&quot; alt&#x3D;&quot;car!&quot;/&gt;&lt;/figure&gt;
-        &lt;div class&#x3D;&quot;card-body&quot;&gt;
-          &lt;h2 class&#x3D;&quot;card-title&quot;&gt;{{category.name}}&lt;/h2&gt;
-          &lt;div class&#x3D;&quot;flex&quot;&gt;
-            &lt;p&gt;Price: {{category.price | currency}}&lt;/p&gt;
-          &lt;p&gt;On Stock: {{category.stock}}&lt;/p&gt;
-          &lt;/div&gt;
-          
-          &lt;div class&#x3D;&quot;card-actions justify-end&quot;&gt;
-            &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;edit/{{category.id}}&quot; *ngIf&#x3D;&quot;isEdit&quot;&gt;Edit&lt;/button&gt;
-            &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;{{category.id}}&quot; *ngIf&#x3D;&quot;!isEdit&quot;&gt;Details&lt;/button&gt;
-          &lt;/div&gt;
+      &lt;!-- Product Image --&gt;
+      &lt;figure&gt;&lt;img src&#x3D;&quot;{{product.image}}&quot; alt&#x3D;&quot;Product Image&quot;/&gt;&lt;/figure&gt;
+      &lt;!-- Product Details --&gt;
+      &lt;div class&#x3D;&quot;card-body&quot;&gt;
+        &lt;h2 class&#x3D;&quot;card-title&quot;&gt;{{product.name}}&lt;/h2&gt; &lt;!-- Product name --&gt;
+        &lt;div class&#x3D;&quot;flex&quot;&gt;
+          &lt;p&gt;Price: {{product.price | currency}}&lt;/p&gt; &lt;!-- Product price, formatted as currency --&gt;
+          &lt;p&gt;On Stock: {{product.stock}}&lt;/p&gt; &lt;!-- Stock information --&gt;
+        &lt;/div&gt;
+        &lt;!-- Card Actions for Edit or Details --&gt;
+        &lt;div class&#x3D;&quot;card-actions justify-end&quot;&gt;
+          &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;edit/{{product.id}}&quot; *ngIf&#x3D;&quot;isEdit&quot;&gt;Edit&lt;/button&gt;
+          &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;{{product.id}}&quot; *ngIf&#x3D;&quot;!isEdit&quot;&gt;Details&lt;/button&gt;
         &lt;/div&gt;
       &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;button *ngIf&#x3D;&quot;!isEdit; else selectCat&quot; class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-20 right-10&quot;
-    (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
-    Edit Categories&lt;/button&gt;
 
-&lt;ng-template #selectCat&gt;
+&lt;!-- Spacer for Layout --&gt;
+&lt;div class&#x3D;&quot;h-24&quot;&gt;&lt;/div&gt;
 
-    &lt;button *ngIf&#x3D;&quot;isEdit&quot; #selectCat class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-20 right-10&quot;
+&lt;!-- Toggle Button for Edit Mode --&gt;
+&lt;button *ngIf&#x3D;&quot;!isEdit; else selectCat&quot; class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-32 right-10&quot;
         (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
-        Select Categories&lt;/button&gt;
+  Edit Categories&lt;/button&gt;
 
-&lt;/ng-template&gt;</code></pre>
+&lt;!-- Template for Select Mode Button --&gt;
+&lt;ng-template #selectCat&gt;
+  &lt;!-- Alternate button shown when isEdit is true --&gt;
+  &lt;button *ngIf&#x3D;&quot;isEdit&quot; class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-32 right-10&quot;
+          (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
+    Select Categories&lt;/button&gt;
+&lt;/ng-template&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
@@ -726,8 +778,8 @@ export class ProductComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">    <span class="loading loading-spinner h-28 w-28"></span></div><div class="flex w-full justify-center items-center "><input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Type here to Search a Category" class="input input-bordered input-info w-11/12 max-w mb-5  fixed  z-40" /></div><div class="h-20"></div><div class="flex flex-wrap  justify-center gap-y-8 gap-x-2 w-full "><div *ngFor="let category of filteredCategories" class="z-0 " >    <div class="card w-96 glass z-0 h-96">        <figure><img src="{{category.image}}" alt="car!"/></figure>        <div class="card-body">          <h2 class="card-title">{{category.name}}</h2>          <div class="flex">            <p>Price: {{category.price | currency}}</p>          <p>On Stock: {{category.stock}}</p>          </div>                    <div class="card-actions justify-end">            <button class="btn btn-primary" routerLink="edit/{{category.id}}" *ngIf="isEdit">Edit</button>            <button class="btn btn-primary" routerLink="{{category.id}}" *ngIf="!isEdit">Details</button>          </div>        </div>      </div></div></div><button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-20 right-10"    (click)="isEdit = !isEdit">    Edit Categories</button><ng-template #selectCat>    <button *ngIf="isEdit" #selectCat class="btn btn-secondary w-38 mt-10 fixed bottom-20 right-10"        (click)="isEdit = !isEdit">        Select Categories</button></ng-template></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'ImpressumComponent', 'selector': 'pm-impressum'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'},{'name': 'TestComponent', 'selector': 'pm-test'}];
+        var COMPONENT_TEMPLATE = '<div><!-- Loading Indicator Section --><div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">  <!-- Displays a loading spinner while data is being loaded or processed -->  <span class="loading loading-infinity w-28 h-28 bg-primary"></span></div><!-- Search Input Section --><div class="flex w-full justify-center items-center">  <!-- Input field for searching products. Uses two-way binding with searchText and calls onSearch() on model change -->  <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()"          placeholder="Type here to Search a Category"          class="input input-bordered input-info w-11/12 max-w mb-5 fixed z-40" /></div><!-- Spacer for Layout --><div class="h-20"></div><!-- Products Display Section --><div class="flex flex-wrap justify-center gap-y-8 gap-x-2 w-full min-h-full">  <!-- Loop through filteredProducts to display each product -->  <div *ngFor="let product of filteredProducts" class="z-0">    <!-- Product Card -->    <div class="card w-96 glass z-0 h-96">      <!-- Product Image -->      <figure><img src="{{product.image}}" alt="Product Image"/></figure>      <!-- Product Details -->      <div class="card-body">        <h2 class="card-title">{{product.name}}</h2> <!-- Product name -->        <div class="flex">          <p>Price: {{product.price | currency}}</p> <!-- Product price, formatted as currency -->          <p>On Stock: {{product.stock}}</p> <!-- Stock information -->        </div>        <!-- Card Actions for Edit or Details -->        <div class="card-actions justify-end">          <button class="btn btn-primary" routerLink="edit/{{product.id}}" *ngIf="isEdit">Edit</button>          <button class="btn btn-primary" routerLink="{{product.id}}" *ngIf="!isEdit">Details</button>        </div>      </div>    </div>  </div></div><!-- Spacer for Layout --><div class="h-24"></div><!-- Toggle Button for Edit Mode --><button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"        (click)="isEdit = !isEdit">  Edit Categories</button><!-- Template for Select Mode Button --><ng-template #selectCat>  <!-- Alternate button shown when isEdit is true -->  <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"          (click)="isEdit = !isEdit">    Select Categories</button></ng-template></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProductComponent'};
 </script>

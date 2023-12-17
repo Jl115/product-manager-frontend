@@ -194,29 +194,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#isSideBar" >isSideBar</a>
-                            </li>
-                            <li>
                                 <a href="#title" >title</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#addIsSideBar" >addIsSideBar</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -237,7 +220,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/app.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/app.component.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -303,109 +286,12 @@
 
 
 
-    <section data-compodoc="block-methods">
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="addIsSideBar"></a>
-                    <span class="name">
-                        <span ><b>addIsSideBar</b></span>
-                        <a href="#addIsSideBar"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>addIsSideBar(isSideBar: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                </td>
-            </tr>
 
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="14"
-                                    class="link-to-prism">src/app/app.component.ts:14</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>isSideBar</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
     <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isSideBar"></a>
-                    <span class="name">
-                        <span ><b>isSideBar</b></span>
-                        <a href="#isSideBar"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/app.component.ts:12</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -454,12 +340,7 @@ import { UserControllerService, CategoryControllerService, ProductControllerServ
 })
 export class AppComponent {
   title &#x3D; &#x27;product-manager-frontend&#x27;;
-  isSideBar &#x3D; false;
 
-  addIsSideBar(isSideBar: boolean) {
-    this.isSideBar &#x3D; isSideBar;
-    console.log(this.isSideBar);
-  }
 
   constructor(
     private readonly userControllerService: UserControllerService,
@@ -478,11 +359,11 @@ export class AppComponent {
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;content&quot;&gt;
     &lt;main&gt;
-        &lt;pm-header (newItemEvent)&#x3D;&quot;addIsSideBar($event)&quot; class&#x3D;&quot;mb-72 &quot;&gt;&lt;/pm-header&gt;
+        &lt;pm-header class&#x3D;&quot;mb-72 &quot;&gt;&lt;/pm-header&gt;
         &lt;div class&#x3D;&quot;h-8&quot;&gt;&lt;/div&gt;
         &lt;router-outlet&gt;&lt;/router-outlet&gt;
         &lt;div class&#x3D;&quot;h-10&quot;&gt;&lt;/div&gt;
-        &lt;pm-footer&gt;&lt;/pm-footer&gt;
+        &lt;pm-footer class&#x3D;&quot;fixed bottom-6 w-full&quot;&gt;&lt;/pm-footer&gt;
 
     &lt;/main&gt;</code></pre>
     </div>
@@ -582,8 +463,8 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="content">    <main>        <pm-header (newItemEvent)="addIsSideBar($event)" class="mb-72 "></pm-header>        <div class="h-8"></div>        <router-outlet></router-outlet>        <div class="h-10"></div>        <pm-footer></pm-footer>    </main></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'ImpressumComponent', 'selector': 'pm-impressum'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'},{'name': 'TestComponent', 'selector': 'pm-test'}];
+        var COMPONENT_TEMPLATE = '<div><div class="content">    <main>        <pm-header class="mb-72 "></pm-header>        <div class="h-8"></div>        <router-outlet></router-outlet>        <div class="h-10"></div>        <pm-footer class="fixed bottom-6 w-full"></pm-footer>    </main></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
 </script>

@@ -174,6 +174,7 @@
                             <code>RouterLink</code>
                             <code>ReactiveFormsModule</code>
                             <code>FormsModule</code>
+                            <code>MatIconModule</code>
                 </td>
             </tr>
 
@@ -271,7 +272,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -338,8 +339,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/pages/category/categories/categories.component.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/pages/category/categories/categories.component.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -375,8 +376,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/pages/category/categories/categories.component.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/pages/category/categories/categories.component.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -412,8 +413,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/app/pages/category/categories/categories.component.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/pages/category/categories/categories.component.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -459,7 +460,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -490,7 +491,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -521,7 +522,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -552,7 +553,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -583,7 +584,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/category/categories/categories.component.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -606,16 +607,18 @@ import { RouterLink } from &#x27;@angular/router&#x27;;
 // Importing custom DTOs and form modules.
 import { CategoryShowDto } from &#x27;src/app/openapi-client&#x27;;
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule, Validators } from &#x27;@angular/forms&#x27;;
+import {MatIconModule} from &#x27;@angular/material/icon&#x27;;
 
 // Decorator to define metadata for the CategoriesComponent.
 @Component({
   selector: &#x27;pm-categories&#x27;, // Custom element selector to be used in templates.
   standalone: true, // Enabling standalone components feature.
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule ], // Importing necessary modules.
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule, MatIconModule ], // Importing necessary modules.
   templateUrl: &#x27;./categories.component.html&#x27;, // Path to the component&#x27;s template.
   styleUrls: [&#x27;./categories.component.scss&#x27;], // Path to the component&#x27;s styles.
 })
 export class CategoriesComponent implements OnInit {
+
   categories: CategoryShowDto[] &#x3D; []; // Array to store category data.
   filteredCategories: CategoryShowDto[] &#x3D; []; // Array for storing filtered category data.
   isLoading: boolean &#x3D; false; // Flag to indicate loading state.
@@ -662,31 +665,50 @@ export class CategoriesComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;isLoading&quot; class&#x3D;&quot;h-full w-full flex items-center justify-center&quot;&gt;
-    &lt;span class&#x3D;&quot;loading loading-spinner h-28 w-28&quot;&gt;&lt;/span&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Loading Indicator Section --&gt;
+&lt;div *ngIf&#x3D;&quot;isLoading&quot; class&#x3D;&quot;h-full w-full flex items-center justify-center&quot;&gt;
+    &lt;!-- Displays a loading spinner while data is being loaded or processed --&gt;
+    &lt;span class&#x3D;&quot;loading loading-infinity w-28 h-28 bg-primary&quot;&gt;&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class&#x3D;&quot;flex w-full justify-center items-center &quot;&gt;
-    &lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;searchText&quot; (ngModelChange)&#x3D;&quot;onSearch()&quot; placeholder&#x3D;&quot;Type here to Search a Category&quot; class&#x3D;&quot;input input-bordered input-info w-11/12 max-w mt-8  fixed  z-40&quot; /&gt;
+&lt;!-- Search Input Section --&gt;
+&lt;div class&#x3D;&quot;flex w-full justify-center items-center&quot;&gt;
+    &lt;!-- Search input for categories, updates searchText and triggers onSearch() on change --&gt;
+    &lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;searchText&quot; (ngModelChange)&#x3D;&quot;onSearch()&quot;
+           placeholder&#x3D;&quot;Type here to Search a Category&quot;
+           class&#x3D;&quot;input input-bordered input-info w-11/12 max-w mt-8 fixed z-40&quot; /&gt;
+&lt;/div&gt;
+
+&lt;!-- Spacer for layout --&gt;
+&lt;div class&#x3D;&quot;h-20&quot;&gt;&lt;/div&gt;
+
+&lt;!-- Category Display and Interaction Section --&gt;
+&lt;div class&#x3D;&quot;flex flex-col w-full justify-center&quot;&gt;
+    &lt;!-- Loop through filteredCategories to display each category --&gt;
+    &lt;div *ngFor&#x3D;&quot;let category of filteredCategories&quot; class&#x3D;&quot;flex justify-center&quot;&gt;
+        &lt;!-- Edit mode: Button to navigate to edit page for the selected category --&gt;
+        &lt;button *ngIf&#x3D;&quot;isEdit&quot; class&#x3D;&quot;btn glass w-11/12 mt-2&quot; 
+                routerLink&#x3D;&quot;edit/{{category.id}}&quot;&gt;{{category.name}}&lt;/button&gt;
+        &lt;!-- Selection mode: Button to navigate to products page for the selected category --&gt;
+        &lt;button *ngIf&#x3D;&quot;!isEdit&quot; class&#x3D;&quot;btn glass w-11/12 mt-2&quot;
+                routerLink&#x3D;&quot;{{category.id}}/products&quot;&gt;{{category.name}}&lt;/button&gt;
+
     &lt;/div&gt;
-    &lt;div class&#x3D;&quot;h-20&quot;&gt;&lt;/div&gt;
-    &lt;div class&#x3D;&quot;flex flex-col w-full justify-center &quot;&gt;
-&lt;div *ngFor&#x3D;&quot;let category of filteredCategories&quot; class&#x3D;&quot;flex justify-center&quot;&gt;
-    &lt;button *ngIf&#x3D;&quot;isEdit&quot; class&#x3D;&quot;btn glass w-11/12 mt-2 &quot; routerLink&#x3D;&quot;edit/{{category.id}}&quot; &gt;{{category.name}}&lt;/button&gt;
-    &lt;button *ngIf&#x3D;&quot;!isEdit&quot; class&#x3D;&quot;btn glass w-11/12 mt-2 &quot; routerLink&#x3D;&quot;{{category.id}}/products&quot;&gt;{{category.name}}&lt;/button&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;button *ngIf&#x3D;&quot;!isEdit; else selectCat&quot; class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-20 right-10&quot;
-    (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
+&lt;div class&#x3D;&quot;h-24&quot;&gt;&lt;/div&gt;
+
+&lt;!-- Toggle Button between Edit and Select Modes --&gt;
+&lt;button *ngIf&#x3D;&quot;!isEdit; else selectCat&quot; class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-32 right-10&quot;
+        (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
     Edit Categories&lt;/button&gt;
 
+&lt;!-- Template for Select Mode Button --&gt;
 &lt;ng-template #selectCat&gt;
-
-    &lt;button *ngIf&#x3D;&quot;isEdit&quot; #selectCat class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-20 right-10&quot;
-        (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
+    &lt;button *ngIf&#x3D;&quot;isEdit&quot; class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-32 right-10&quot;
+            (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
         Select Categories&lt;/button&gt;
-
-&lt;/ng-template&gt;</code></pre>
+&lt;/ng-template&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
@@ -721,8 +743,8 @@ export class CategoriesComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">    <span class="loading loading-spinner h-28 w-28"></span></div><div class="flex w-full justify-center items-center ">    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Type here to Search a Category" class="input input-bordered input-info w-11/12 max-w mt-8  fixed  z-40" />    </div>    <div class="h-20"></div>    <div class="flex flex-col w-full justify-center "><div *ngFor="let category of filteredCategories" class="flex justify-center">    <button *ngIf="isEdit" class="btn glass w-11/12 mt-2 " routerLink="edit/{{category.id}}" >{{category.name}}</button>    <button *ngIf="!isEdit" class="btn glass w-11/12 mt-2 " routerLink="{{category.id}}/products">{{category.name}}</button></div></div><button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-20 right-10"    (click)="isEdit = !isEdit">    Edit Categories</button><ng-template #selectCat>    <button *ngIf="isEdit" #selectCat class="btn btn-secondary w-38 mt-10 fixed bottom-20 right-10"        (click)="isEdit = !isEdit">        Select Categories</button></ng-template></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'ImpressumComponent', 'selector': 'pm-impressum'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'},{'name': 'TestComponent', 'selector': 'pm-test'}];
+        var COMPONENT_TEMPLATE = '<div><!-- Loading Indicator Section --><div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">    <!-- Displays a loading spinner while data is being loaded or processed -->    <span class="loading loading-infinity w-28 h-28 bg-primary"></span></div><!-- Search Input Section --><div class="flex w-full justify-center items-center">    <!-- Search input for categories, updates searchText and triggers onSearch() on change -->    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()"           placeholder="Type here to Search a Category"           class="input input-bordered input-info w-11/12 max-w mt-8 fixed z-40" /></div><!-- Spacer for layout --><div class="h-20"></div><!-- Category Display and Interaction Section --><div class="flex flex-col w-full justify-center">    <!-- Loop through filteredCategories to display each category -->    <div *ngFor="let category of filteredCategories" class="flex justify-center">        <!-- Edit mode: Button to navigate to edit page for the selected category -->        <button *ngIf="isEdit" class="btn glass w-11/12 mt-2"                 routerLink="edit/{{category.id}}">{{category.name}}</button>        <!-- Selection mode: Button to navigate to products page for the selected category -->        <button *ngIf="!isEdit" class="btn glass w-11/12 mt-2"                routerLink="{{category.id}}/products">{{category.name}}</button>    </div></div><div class="h-24"></div><!-- Toggle Button between Edit and Select Modes --><button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"        (click)="isEdit = !isEdit">    Edit Categories</button><!-- Template for Select Mode Button --><ng-template #selectCat>    <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"            (click)="isEdit = !isEdit">        Select Categories</button></ng-template></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CategoriesComponent'};
 </script>

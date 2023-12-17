@@ -15,6 +15,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserControllerService } from 'src/app/openapi-client/api/api';
 import { LoginRequestDto } from 'src/app/openapi-client/model/loginRequestDto';
 import Swal from 'sweetalert2'; // Importing SweetAlert2 for alert messages
+import { TokenService } from 'src/app/service/token.service';
 
 // Component decorator defining metadata for LoginComponent
 @Component({
@@ -47,7 +48,8 @@ export class LoginComponent {
   // Constructor with dependency injections
   constructor(
     private userControllerService: UserControllerService, // Injecting UserControllerService
-    private router: Router // Injecting Angular Router
+    private router: Router, // Injecting Angular Router
+    private tokenService: TokenService// Injecting AuthService
   ) {
     // Initializing loginForm with FormControls
     this.loginForm = new FormGroup({
@@ -77,12 +79,15 @@ export class LoginComponent {
 
   // Function to handle the login process
   login() {
+    console.log("hello")
     if (this.email.valid && this.password.valid) {
+
       // Making a login request if the form is valid
       this.userControllerService
         .login({ password: this.password.value!, email: this.email.value! })
         .subscribe(
           (response) => {
+            this.tokenService.setToken(response.token!); 
             // Handling successful login response
             Swal.fire({
               title: 'Login successful',
@@ -90,10 +95,10 @@ export class LoginComponent {
               icon: 'success',
               confirmButtonText: 'OK',
             }).then((result) => {
-              if (result.isConfirmed) {
-                localStorage.setItem('ACCESS_TOKEN', response.token!); // Storing the access token
+              if (result.isConfirmed || result.isDismissed) {
                 this.router.navigate(['/']).then(() => {
-                  window.location.reload(); // Navigating to the home page and reloading
+     
+                  localStorage.setItem('ACCESS_TOKEN', response.token!); // Storing the access token
                 });
               }
             });

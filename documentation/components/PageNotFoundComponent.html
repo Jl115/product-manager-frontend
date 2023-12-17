@@ -220,15 +220,16 @@ export class PageNotFoundComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;stats shadow&quot;&gt;
-  
-    &lt;div class&#x3D;&quot;stat&quot;&gt;
-      &lt;div class&#x3D;&quot;stat-title&quot;&gt;Total Page Views&lt;/div&gt;
-      &lt;div class&#x3D;&quot;stat-value&quot;&gt;89,400&lt;/div&gt;
-      &lt;div class&#x3D;&quot;stat-desc&quot;&gt;21% more than last month&lt;/div&gt;
-    &lt;/div&gt;
-    
-  &lt;/div&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot; h-4/5 w-full flex justify-center items-center&quot;&gt;
+
+
+&lt;div class&#x3D;&quot;w-11/12&quot;&gt;
+  &lt;div role&#x3D;&quot;alert&quot; class&#x3D;&quot;alert alert-error h-64 flex justify-center&quot;&gt;
+    &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; class&#x3D;&quot;stroke-current shrink-0 h-10 w-10&quot; fill&#x3D;&quot;none&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;&lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; stroke-width&#x3D;&quot;2&quot; d&#x3D;&quot;M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z&quot; /&gt;&lt;/svg&gt;
+    &lt;span class&#x3D;&quot;text-4xl font-thin&quot;&gt;Page Not Found&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
@@ -263,8 +264,8 @@ export class PageNotFoundComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="stats shadow">      <div class="stat">      <div class="stat-title">Total Page Views</div>      <div class="stat-value">89,400</div>      <div class="stat-desc">21% more than last month</div>    </div>      </div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'ImpressumComponent', 'selector': 'pm-impressum'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'},{'name': 'TestComponent', 'selector': 'pm-test'}];
+        var COMPONENT_TEMPLATE = '<div><div class=" h-4/5 w-full flex justify-center items-center"><div class="w-11/12">  <div role="alert" class="alert alert-error h-64 flex justify-center">    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-10 w-10" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>    <span class="text-4xl font-thin">Page Not Found</span>  </div></div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PageNotFoundComponent'};
 </script>

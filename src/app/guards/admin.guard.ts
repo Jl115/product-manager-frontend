@@ -8,8 +8,7 @@ import { jwtDecode } from 'jwt-decode';
 // Importing jwtDecode for decoding JSON Web Tokens
 
 interface TokenPayload {
-  roles: string[];
-  // Defining an interface for the expected structure of the token payload, specifically the roles array
+  roles: string[];  
 }
 
 export const adminGuard: CanActivateFn = (route, state) => {

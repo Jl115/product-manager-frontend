@@ -159,22 +159,35 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(route, state) &#x3D;&gt; {
+  // Declaring a guard function that implements the CanActivateFn interface
+
   const router &#x3D; inject(Router);
+  // Using Angular&#x27;s inject function to get an instance of the Router service
 
   try {
     const token &#x3D; localStorage.getItem(&#x27;ACCESS_TOKEN&#x27;);
+    // Attempting to retrieve the access token from local storage
+
     if (token) {
       const payload: TokenPayload &#x3D; jwtDecode(token);
+      // Decoding the JWT token to get the payload
+
       if (payload.roles.includes(&#x27;admin&#x27;)) {
+        // Checking if the decoded token payload includes the &#x27;admin&#x27; role
         return true;
+        // Returning true allows the route activation (navigation to the route is permitted)
       }
     }
   } catch (error) {
     console.error(&#x27;Error decoding token&#x27;, error);
+    // Logging an error message in case of an exception during token decoding
   }
 
   router.navigate([&#x27;/auth/login&#x27;]);
+  // Navigating to the login route if the token is not present or valid
+
   return false;
+  // Returning false prevents the route activation (navigation to the route is not permitted)
 }</code>
                     </td>
                 </tr>

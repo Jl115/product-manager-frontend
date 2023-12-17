@@ -7,28 +7,68 @@ import { CategoryControllerService } from 'src/app/openapi-client/api/categoryCo
 import { RouterLink } from '@angular/router';
 
 // Importing custom DTOs and form modules.
-import { CategoryShowDto } from 'src/app/openapi-client';
+import { CategoryShowDto, UserControllerService, UserShowDto } from 'src/app/openapi-client';
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule, Validators } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
-
-// Decorator to define metadata for the CategoriesComponent.
+import Swal from 'sweetalert2';
 @Component({
-  selector: 'pm-categories', // Custom element selector to be used in templates.
-  standalone: true, // Enabling standalone components feature.
+  selector: 'pm-admin',
+  standalone: true,
   imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule, MatIconModule ], // Importing necessary modules.
-  templateUrl: './categories.component.html', // Path to the component's template.
-  styleUrls: ['./categories.component.scss'], // Path to the component's styles.
+  templateUrl: './admin.component.html',
+  styleUrl: './admin.component.scss'
 })
-export class CategoriesComponent implements OnInit {
+export class AdminComponent {
+  isPromote: boolean = false;
+  
+promoteAdmin(id: number) {
+  console.log(id) 
+Swal.fire({
+  title: 'Are you sure?',
+  text: 'You will not be able to recover this imaginary User!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, promote it!',
+  cancelButtonText: 'No, keep it'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire(
+      'Promoted!',
+      'Your imaginary User has been promoted.',
+      'success'
+    )
+    this.categoryControllerService.promoteUser(id).subscribe(
+      (response) => {
+ 
+        console.log('Promotion success:', response);
 
-  categories: CategoryShowDto[] = []; // Array to store category data.
-  filteredCategories: CategoryShowDto[] = []; // Array for storing filtered category data.
+      },
+      (error) => {
+
+        console.error('Promotion failed:', error);
+
+      }
+    );
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    Swal.fire(
+      'Cancelled',
+      'Your imaginary user is safe :)',
+      'error'
+    )
+  }
+})
+
+}
+
+
+  categories: UserShowDto[] = []; // Array to store category data.
+  filteredCategories: UserShowDto[] = []; // Array for storing filtered category data.
   isLoading: boolean = false; // Flag to indicate loading state.
   isEdit: boolean = false; // Flag to indicate edit state.
   searchText: string = ''; // Variable to store search text.
 
   // Constructor injecting the CategoryControllerService.
-  constructor(private categoryControllerService: CategoryControllerService) {}
+  constructor(private categoryControllerService: UserControllerService) {}
 
   // ngOnInit lifecycle hook to perform initial data loading.
   ngOnInit() {
@@ -41,7 +81,7 @@ export class CategoriesComponent implements OnInit {
   // Method to load categories from the CategoryControllerService.
   loadCategories() {
     this.isLoading = true; // Setting the loading state.
-    this.categoryControllerService.getAllCategories().subscribe(
+    this.categoryControllerService.getAllUsers().subscribe(
       categories => {
         this.categories = categories; // Assigning fetched categories.
         this.filteredCategories = categories; // Initializing filtered categories.
@@ -58,7 +98,7 @@ export class CategoriesComponent implements OnInit {
   onSearch() {
     this.filteredCategories = this.searchText ? 
       this.categories.filter(category => 
-        category.name.toLowerCase().includes(this.searchText.toLowerCase())
+        category.email!.toLowerCase().includes(this.searchText.toLowerCase())
       ) : 
       this.categories; // Filtering categories based on search text.
   }

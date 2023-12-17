@@ -137,7 +137,8 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code>OnChanges</code>
+                <code>OnInit</code>
+                <code>OnDestroy</code>
     </p>
 
 
@@ -171,12 +172,11 @@
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
                             <code>CommonModule</code>
-                            <code>MatToolbarModule</code>
-                            <code>MatButtonModule</code>
                             <code>MatIconModule</code>
+                            <code>MatButtonModule</code>
+                            <code>MatToolbarModule</code>
                             <code>MatSidenavModule</code>
                             <code>RouterLink</code>
-                            <code>MatMenuModule</code>
                 </td>
             </tr>
 
@@ -220,6 +220,9 @@
                                 <a href="#detailsElement" >detailsElement</a>
                             </li>
                             <li>
+                                <a href="#isAdmin" >isAdmin</a>
+                            </li>
+                            <li>
                                 <a href="#isEnter" >isEnter</a>
                             </li>
                             <li>
@@ -227,6 +230,10 @@
                             </li>
                             <li>
                                 <a href="#name" >name</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#tokenSubscription" >tokenSubscription</a>
                             </li>
                         </ul>
                     </td>
@@ -241,13 +248,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#addIsSideBar" >addIsSideBar</a>
-                            </li>
-                            <li>
                                 <a href="#getProfile" >getProfile</a>
                             </li>
                             <li>
-                                <a href="#ngOnChanges" >ngOnChanges</a>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
@@ -290,12 +294,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(renderer: Renderer2)</code>
+<code>constructor(renderer: Renderer2, tokenService: <a href="../injectables/TokenService.html" target="_self">TokenService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/elements/header/header.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/elements/header/header.component.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -317,6 +321,18 @@
                                                   
                                                         <td>
                                                                     <code>Renderer2</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>tokenService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TokenService.html" target="_self" >TokenService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -346,7 +362,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/elements/header/header.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/elements/header/header.component.ts:44</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -367,7 +383,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/elements/header/header.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/elements/header/header.component.ts:47</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -380,73 +396,6 @@
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="addIsSideBar"></a>
-                    <span class="name">
-                        <span ><b>addIsSideBar</b></span>
-                        <a href="#addIsSideBar"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>addIsSideBar(isSideBar: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/elements/header/header.component.ts:29</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>isSideBar</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -467,8 +416,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="61"
-                                    class="link-to-prism">src/app/elements/header/header.component.ts:61</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/elements/header/header.component.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -488,24 +437,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="ngOnChanges"></a>
+                    <a name="ngOnDestroy"></a>
                     <span class="name">
-                        <span ><b>ngOnChanges</b></span>
-                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>ngOnChanges(changes: SimpleChanges)</code>
+<code>ngOnDestroy()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/elements/header/header.component.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/elements/header/header.component.ts:116</a></div>
                         </td>
                     </tr>
 
@@ -513,40 +462,10 @@
             <tr>
                 <td class="col-md-4">
 
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>changes</td>
-                                            <td>
-                                                        <code>SimpleChanges</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
-                            <div class="io-description">
-                                
-                            </div>
                 </td>
             </tr>
         </tbody>
@@ -571,8 +490,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/elements/header/header.component.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/elements/header/header.component.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -608,8 +527,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/app/elements/header/header.component.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/elements/header/header.component.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -702,7 +621,38 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/elements/header/header.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/elements/header/header.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAdmin"></a>
+                    <span class="name">
+                        <span ><b>isAdmin</b></span>
+                        <a href="#isAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/elements/header/header.component.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -733,7 +683,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/elements/header/header.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/elements/header/header.component.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -764,7 +714,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/elements/header/header.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/elements/header/header.component.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -790,12 +740,39 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&quot;test&quot;</code>
+                        <i>Default value : </i><code>&quot;Login&quot;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/elements/header/header.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/elements/header/header.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tokenSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>tokenSubscription</b></span>
+                        <a href="#tokenSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/elements/header/header.component.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -808,113 +785,182 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, EventEmitter, OnChanges, Output, Renderer2, SimpleChanges, ViewChild } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewChild } from &#x27;@angular/core&#x27;;
+// Importing Angular core elements for component creation and handling lifecycle hooks, event handling, and DOM manipulation
+
 import { CommonModule } from &#x27;@angular/common&#x27;;
+// Importing CommonModule for common directives like ngIf, ngFor
+
 import {MatIconModule} from &#x27;@angular/material/icon&#x27;;
 import {MatButtonModule} from &#x27;@angular/material/button&#x27;;
 import {MatToolbarModule} from &#x27;@angular/material/toolbar&#x27;;
 import {MatSidenavModule} from &#x27;@angular/material/sidenav&#x27;;
-import { Route, RouterLink, RouterLinkWithHref } from &#x27;@angular/router&#x27;;
-import {MatMenuModule} from &#x27;@angular/material/menu&#x27;;
+// Importing various Material Design modules for UI components
+
+import { RouterLink } from &#x27;@angular/router&#x27;;
+// Importing RouterLink for router link directives in the template
+
 import { jwtDecode } from &#x27;jwt-decode&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { TokenService } from &#x27;src/app/service/token.service&#x27;;
+import { set } from &#x27;mongoose&#x27;;
+// Importing jwtDecode for decoding JSON Web Tokens
 
 @Component({
   selector: &#x27;pm-header&#x27;,
+  // Declaring the component selector for embedding this component in other templates
+
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, RouterLink, MatMenuModule],
+  // Enabling standalone component feature, making this component independent of any NgModule
+
+  imports: [ CommonModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, RouterLink],
+  // Specifying the imports required for this standalone component
+
   templateUrl: &#x27;./header.component.html&#x27;,
+  // Linking to an external HTML template file for this component
+
   styleUrls: [&#x27;./header.component.scss&#x27;]
+  // Linking to an external SCSS stylesheet for this component
 })
-
-export class HeaderComponent implements OnChanges{
-
+export class HeaderComponent implements OnInit, OnDestroy {
+  // HeaderComponent class implementing the OnChanges lifecycle hook
+  private tokenSubscription!: Subscription;
   @ViewChild(&#x27;detailsElement&#x27;) detailsElement: ElementRef | undefined;
-@Output()  isSideBar &#x3D; false;
+  // ViewChild decorator to access a DOM element, in this case, detailsElement
 
-@Output() newItemEvent &#x3D; new EventEmitter&lt;boolean&gt;();
-isLogin: boolean &#x3D; false;
-name: string &#x3D; &quot;test&quot;;
-isEnter: boolean &#x3D; false;
+  @Output() isSideBar &#x3D; false;
+  // Output property to emit the sidebar&#x27;s state, initially set to false
 
-addIsSideBar(isSideBar: boolean) {
-  this.newItemEvent.emit(isSideBar);
-}
+  @Output() newItemEvent &#x3D; new EventEmitter&lt;boolean&gt;();
+  // Output event emitter to communicate with parent components
+
+  isLogin: boolean &#x3D; false;
+  // Property to track the login state
+
+  name: string &#x3D; &quot;Login&quot;;
+  // Property to hold the user&#x27;s name or a default value
+
+  isEnter: boolean &#x3D; false;
+  isAdmin: boolean &#x3D; false;
+  // Property to track mouse enter events
 
 
 
+  constructor(private renderer: Renderer2, private tokenService: TokenService) { }
+  // Constructor injecting Renderer2 for safe DOM manipulations
 
 
-constructor(
-  private renderer: Renderer2,
-  ) { }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(&quot;ngOnChanges&quot;);
-  }
+
   ngOnInit(): void {
-    try {
-      const token &#x3D; localStorage.getItem(&#x27;ACCESS_TOKEN&#x27;);
+    this.tokenSubscription &#x3D; this.tokenService.token$.subscribe(token &#x3D;&gt; {
       if (token) {
-        const payload: any &#x3D; jwtDecode(token); // Dekodieren Sie das Token
-        if (payload.email) { // Überprüfen Sie, ob die E-Mail-Adresse im Payload vorhanden ist
-          this.name &#x3D; payload.email; // Speichern Sie die E-Mail-Adresse
-          this.isLogin &#x3D; true; // Setzen Sie isLogin auf true, wenn das Token gültig ist
+        try {
+          const payload: any &#x3D; jwtDecode(token); 
+          if (payload.email) {
+            this.name &#x3D; payload.email;
+            this.isLogin &#x3D; true;
+          }
+          if (payload.roles.includes(&#x27;admin&#x27;)) {
+            // Checking if the decoded token payload includes the &#x27;admin&#x27; role
+            this.isAdmin &#x3D; true;
+            // Returning true allows the route activation (navigation to the route is permitted)
+          } else {
+            this.isAdmin &#x3D; false;
+            // Returning false denies the route activation (navigation to the route is denied)
+          }
+        } catch (error) {
+          console.error(&#x27;Error decoding token&#x27;, error);
+          this.isLogin &#x3D; false;
         }
       } else {
+        this.name &#x3D; &quot;Login&quot;;
         this.isLogin &#x3D; false;
       }
-    } catch (error) {
-      console.error(&#x27;Error decoding token&#x27;, error);
-      this.isLogin &#x3D; false;
-    }
+    });
   }
 
-getProfile() {
-  this.isLogin &#x3D; true;
-  this.name &#x3D; &quot;Profile&quot;;
-}
-toggleDetails(categories: HTMLElement, open: boolean) {
-  if (open) {
-    this.renderer.setAttribute(categories, &#x27;open&#x27;, &#x27;true&#x27;);
-  } else {
-    this.renderer.removeAttribute(categories, &#x27;open&#x27;);
+  getProfile() {
+    // Method to handle profile related actions
+    this.isLogin &#x3D; true;
+    this.name &#x3D; &quot;Profile&quot;;
+    // Updating the login state and name for profile scenario
+  }
+
+  toggleDetails(categories: HTMLElement, open: boolean) {
+    // Method to toggle the details element
+    if (open) {
+      this.renderer.setAttribute(categories, &#x27;open&#x27;, &#x27;true&#x27;);
+      // If &#x27;open&#x27; is true, set the &#x27;open&#x27; attribute on the categories element
+      setTimeout(() &#x3D;&gt; {
+        this.renderer.removeAttribute(categories, &#x27;open&#x27;);
+        // Scroll the categories element into view
+      }, 3000);
+    } else {
+      this.renderer.removeAttribute(categories, &#x27;open&#x27;);
+      // Otherwise, remove the &#x27;open&#x27; attribute from the categories element
+    }
+  }
+  ngOnDestroy(): void {
+    this.tokenSubscription.unsubscribe();
   }
 }
-}
+
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;header class&#x3D;&quot;z-50 sticky w-full flex items-center justify-center h-24&quot;&gt;
+  &lt;!-- The header tag defines the top section of the webpage; styled to be sticky, full width, centered, and of a certain height --&gt;
   &lt;div class&#x3D;&quot;navbar bg-primary rounded-xl fixed w-11/12&quot;&gt;
-    &lt;div class&#x3D;&quot;flex-1&quot;&gt;
-      &lt;a class&#x3D;&quot;btn btn-ghost text-xl&quot; routerLink&#x3D;&quot;&quot;&gt;Shop.com&lt;/a&gt;
+    &lt;!-- A div for the navbar, with background color, rounded corners, fixed position, and width slightly less than full --&gt;
+    &lt;div class&#x3D;&quot;flex-1 gap-64&quot;&gt;
+      &lt;!-- Container for the logo or title of the website; flex-1 makes it expand to fill available space --&gt;
+      &lt;a class&#x3D;&quot;btn btn-ghost text-xl &quot; routerLink&#x3D;&quot;&quot;&gt;Shop.com&lt;/a&gt;
+      &lt;!-- A link representing the brand or title of the website, styled as a large text button --&gt;
+
     &lt;/div&gt;
+
     &lt;div class&#x3D;&quot;flex-none&quot;&gt;
-      &lt;ul class&#x3D;&quot;menu menu-horizontal px-1&quot;  (mouseenter)&#x3D;&quot;isEnter &#x3D; true&quot;&gt;
+      &lt;!-- Container for navigation items; flex-none prevents it from expanding --&gt;
+      &lt;ul class&#x3D;&quot;menu menu-horizontal px-1&quot; (mouseenter)&#x3D;&quot;isEnter &#x3D; true&quot;&gt;
+        &lt;!-- An unordered list for navigation links, styled horizontally with padding; on mouseenter, sets a variable isEnter to true --&gt;
+
         &lt;li&gt;
-          &lt;details #categories (mouseenter)&#x3D;&quot;toggleDetails(categories, true)&quot; &gt;
-            &lt;summary&gt;Categories&lt;/summary&gt;
+          &lt;!-- List item for a dropdown menu --&gt;
+          &lt;details #categories (mouseenter)&#x3D;&quot;toggleDetails(categories, true)&quot;&gt;
+            &lt;!-- The details tag creates a dropdown; #categories is a template reference variable; on mouseenter, calls toggleDetails function --&gt;
+            &lt;summary&gt;Categories&lt;/summary&gt; &lt;!-- The summary tag provides a visible header for the dropdown --&gt;
             &lt;ul class&#x3D;&quot;p-2 bg-base-100 rounded-t-none z-50&quot; (mouseleave)&#x3D;&quot;toggleDetails(categories, false)&quot;&gt;
-              &lt;li class&#x3D;&quot;z-50&quot;&gt;&lt;a routerLink&#x3D;&quot;categories&quot;&gt;Categories&lt;/a&gt;&lt;/li&gt;
-              &lt;li class&#x3D;&quot;z-50&quot;&gt;&lt;a routerLink&#x3D;&quot;categories/create&quot;&gt;Create&lt;/a&gt;&lt;/li&gt;
+              &lt;!-- Nested unordered list for dropdown items; on mouseleave, calls toggleDetails function --&gt;
+              &lt;li class&#x3D;&quot;z-50&quot;&gt;&lt;a routerLink&#x3D;&quot;categories&quot;&gt;Categories&lt;/a&gt;&lt;/li&gt; &lt;!-- Dropdown item with a router link --&gt;
+              &lt;li *ngIf&#x3D;&quot;isAdmin&quot; class&#x3D;&quot;z-50&quot;&gt;&lt;a routerLink&#x3D;&quot;categories/create&quot;&gt;Create&lt;/a&gt;&lt;/li&gt;
+              &lt;!-- Another dropdown item with a router link --&gt;
             &lt;/ul&gt;
           &lt;/details&gt;
         &lt;/li&gt;
-        
+        &lt;!-- Additional list items for other menu sections --&gt;
         &lt;li&gt;
-          &lt;details  #products (mouseenter)&#x3D;&quot;toggleDetails(products, true)&quot;&gt;
-            &lt;summary&gt;
-              Products
-            &lt;/summary&gt;
+          &lt;details #products (mouseenter)&#x3D;&quot;toggleDetails(products, true)&quot;&gt;
+            &lt;summary&gt;Products&lt;/summary&gt;
             &lt;ul class&#x3D;&quot;p-2 bg-base-100 rounded-t-none&quot; (mouseleave)&#x3D;&quot;toggleDetails(products, false)&quot;&gt;
-              &lt;li&gt;&lt;a routerLink&#x3D;&quot;products&quot;&gt;Products&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a routerLink&#x3D;&quot;products/create&quot;&gt;Create&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a routerLink&#x3D;&quot;products/&quot;&gt;Products&lt;/a&gt;&lt;/li&gt;
+              &lt;li *ngIf&#x3D;&quot;isAdmin&quot;&gt;&lt;a routerLink&#x3D;&quot;products/create&quot;&gt;Create&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/details&gt;
+        &lt;/li&gt;
+
+        &lt;li *ngIf&#x3D;&quot;isLogin&quot;&gt;
+          &lt;details #login (mouseenter)&#x3D;&quot;toggleDetails(login, true)&quot;&gt;
+            &lt;summary *ngIf&#x3D;&quot;isLogin&quot;&gt;{{name}}&lt;/summary&gt;
+            &lt;summary *ngIf&#x3D;&quot;!isLogin&quot;&gt;Login&lt;/summary&gt;
+            &lt;ul class&#x3D;&quot;p-2 bg-base-100 rounded-t-none&quot; (mouseleave)&#x3D;&quot;toggleDetails(login, false)&quot;&gt;
+              &lt;li *ngIf&#x3D;&quot;isAdmin&quot;&gt;&lt;a routerLink&#x3D;&quot;admin&quot;&gt;Show all User&lt;/a&gt;&lt;/li&gt;
+
             &lt;/ul&gt;
           &lt;/details&gt;
         &lt;/li&gt;
         &lt;li&gt;
           &lt;a routerLink&#x3D;&quot;auth/login&quot; *ngIf&#x3D;&quot;!isLogin&quot;&gt;Login&lt;/a&gt;
-          &lt;a routerLink&#x3D;&quot;test&quot; *ngIf&#x3D;&quot;isLogin&quot;&gt;{{name}}&lt;/a&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/div&gt;
@@ -967,8 +1013,8 @@ toggleDetails(categories: HTMLElement, open: boolean) {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><header class="z-50 sticky w-full flex items-center justify-center h-24">  <div class="navbar bg-primary rounded-xl fixed w-11/12">    <div class="flex-1">      <a class="btn btn-ghost text-xl" routerLink="">Shop.com</a>    </div>    <div class="flex-none">      <ul class="menu menu-horizontal px-1"  (mouseenter)="isEnter = true">        <li>          <details #categories (mouseenter)="toggleDetails(categories, true)" >            <summary>Categories</summary>            <ul class="p-2 bg-base-100 rounded-t-none z-50" (mouseleave)="toggleDetails(categories, false)">              <li class="z-50"><a routerLink="categories">Categories</a></li>              <li class="z-50"><a routerLink="categories/create">Create</a></li>            </ul>          </details>        </li>                <li>          <details  #products (mouseenter)="toggleDetails(products, true)">            <summary>              Products            </summary>            <ul class="p-2 bg-base-100 rounded-t-none" (mouseleave)="toggleDetails(products, false)">              <li><a routerLink="products">Products</a></li>              <li><a routerLink="products/create">Create</a></li>            </ul>          </details>        </li>        <li>          <a routerLink="auth/login" *ngIf="!isLogin">Login</a>          <a routerLink="test" *ngIf="isLogin">{{name}}</a>        </li>      </ul>    </div>  </div></header></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'ImpressumComponent', 'selector': 'pm-impressum'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'},{'name': 'TestComponent', 'selector': 'pm-test'}];
+        var COMPONENT_TEMPLATE = '<div><header class="z-50 sticky w-full flex items-center justify-center h-24">  <!-- The header tag defines the top section of the webpage; styled to be sticky, full width, centered, and of a certain height -->  <div class="navbar bg-primary rounded-xl fixed w-11/12">    <!-- A div for the navbar, with background color, rounded corners, fixed position, and width slightly less than full -->    <div class="flex-1 gap-64">      <!-- Container for the logo or title of the website; flex-1 makes it expand to fill available space -->      <a class="btn btn-ghost text-xl " routerLink="">Shop.com</a>      <!-- A link representing the brand or title of the website, styled as a large text button -->    </div>    <div class="flex-none">      <!-- Container for navigation items; flex-none prevents it from expanding -->      <ul class="menu menu-horizontal px-1" (mouseenter)="isEnter = true">        <!-- An unordered list for navigation links, styled horizontally with padding; on mouseenter, sets a variable isEnter to true -->        <li>          <!-- List item for a dropdown menu -->          <details #categories (mouseenter)="toggleDetails(categories, true)">            <!-- The details tag creates a dropdown; #categories is a template reference variable; on mouseenter, calls toggleDetails function -->            <summary>Categories</summary> <!-- The summary tag provides a visible header for the dropdown -->            <ul class="p-2 bg-base-100 rounded-t-none z-50" (mouseleave)="toggleDetails(categories, false)">              <!-- Nested unordered list for dropdown items; on mouseleave, calls toggleDetails function -->              <li class="z-50"><a routerLink="categories">Categories</a></li> <!-- Dropdown item with a router link -->              <li *ngIf="isAdmin" class="z-50"><a routerLink="categories/create">Create</a></li>              <!-- Another dropdown item with a router link -->            </ul>          </details>        </li>        <!-- Additional list items for other menu sections -->        <li>          <details #products (mouseenter)="toggleDetails(products, true)">            <summary>Products</summary>            <ul class="p-2 bg-base-100 rounded-t-none" (mouseleave)="toggleDetails(products, false)">              <li><a routerLink="products/">Products</a></li>              <li *ngIf="isAdmin"><a routerLink="products/create">Create</a></li>            </ul>          </details>        </li>        <li *ngIf="isLogin">          <details #login (mouseenter)="toggleDetails(login, true)">            <summary *ngIf="isLogin">{{name}}</summary>            <summary *ngIf="!isLogin">Login</summary>            <ul class="p-2 bg-base-100 rounded-t-none" (mouseleave)="toggleDetails(login, false)">              <li *ngIf="isAdmin"><a routerLink="admin">Show all User</a></li>            </ul>          </details>        </li>        <li>          <a routerLink="auth/login" *ngIf="!isLogin">Login</a>        </li>      </ul>    </div>  </div></header></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
 </script>

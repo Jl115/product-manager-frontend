@@ -10,9 +10,10 @@ import { CategoryCreateComponent } from './pages/category/category-create-edit/c
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './pages/product/product-create/product-create.component';
 import { ProductEditComponent } from './pages/product/product-edit/product-edit.component';
-import { ImpressumComponent } from './pages/impressum/impressum.component';
+
 import { adminGuard } from './guards/admin.guard';
 import { ProductByCategoryComponent } from './pages/product/product-by-category/product-by-category.component';
+import { AdminComponent } from './pages/user/admin/admin.component';
 
 
 
@@ -23,10 +24,7 @@ const routes: Routes = [
     component: HomeComponent, // HomeComponent is displayed for the default route
     title: 'Home', // Title for the route
   },
-  {
-    path: 'impressum', // Impressum route
-    component: ImpressumComponent, // ImpressumComponent for displaying legal information
-  },
+
   // Authentication routes
   {
     path: 'auth', // Base path for authentication routes
@@ -64,6 +62,11 @@ const routes: Routes = [
         component: ProductByCategoryComponent, // Component to display products for a specific category
       },
     ],
+  },
+  {
+    path: "admin",
+    component: AdminComponent,
+    canActivate: [adminGuard],
   },
   // Product routes
   {

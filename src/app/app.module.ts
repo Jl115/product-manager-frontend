@@ -15,7 +15,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HomeComponent } from './pages/home/home/home.component';
-import { TestComponent } from './pages/test/test.component';
+
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
@@ -26,7 +26,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     declarations: [
         AppComponent,
         HomeComponent,
-        TestComponent,
+
 
     ],
     providers: [
@@ -55,6 +55,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
                 basePath: 'https://product-manager.cyrotech.ch'
             });
         }),
-    ]
+    ],
+    
 })
 export class AppModule { }

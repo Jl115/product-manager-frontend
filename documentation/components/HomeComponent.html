@@ -207,18 +207,30 @@ export class HomeComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;flex w-full items-center justify-center rounded-2xl &quot;&gt;
-        &lt;div class&#x3D;&quot;hero min-h-screen w-11/12 rounded-2xl shadow-none bg-none&quot; style&#x3D;&quot;background-image: url(https://picsum.photos/1280/720.webp);&quot;&gt;
-                &lt;div class&#x3D;&quot;hero-overlay bg-opacity-60&quot;&gt;&lt;/div&gt;
-                &lt;div class&#x3D;&quot;hero-content text-center text-neutral-content&quot;&gt;
-                    &lt;div class&#x3D;&quot;max-w-md&quot;&gt;
-                        &lt;h1 class&#x3D;&quot;mb-5 text-5xl font-bold text-fuchsia-50 &quot;&gt;Welcome to our Shop&lt;/h1&gt;
-            &lt;p class&#x3D;&quot;mb-5 text-slate-400&quot;&gt;Explore our wide range of products and find what you need.&lt;/p&gt;
-            &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;products&quot;&gt;Explore Our Products&lt;/button&gt;
-          &lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Main Container for Welcome Section --&gt;
+&lt;div class&#x3D;&quot;flex w-full items-center justify-center rounded-2xl&quot;&gt;
+    &lt;!-- Hero Section with Background Image --&gt;
+    &lt;div class&#x3D;&quot;hero min-h-screen w-11/12 rounded-2xl shadow-none bg-none&quot; 
+         style&#x3D;&quot;background-image: url(https://picsum.photos/1280/720.webp);&quot;&gt;
+      &lt;!-- Overlay to Enhance Text Visibility --&gt;
+      &lt;div class&#x3D;&quot;hero-overlay bg-opacity-60&quot;&gt;&lt;/div&gt;
+  
+      &lt;!-- Content Inside the Hero Section --&gt;
+      &lt;div class&#x3D;&quot;hero-content text-center text-neutral-content&quot;&gt;
+        &lt;div class&#x3D;&quot;max-w-md&quot;&gt;
+          &lt;!-- Welcome Message --&gt;
+          &lt;h1 class&#x3D;&quot;mb-5 text-5xl font-bold text-fuchsia-50&quot;&gt;Welcome to our Shop&lt;/h1&gt;
+          &lt;p class&#x3D;&quot;mb-5 text-slate-300&quot;&gt;Explore our wide range of products and find what you need.&lt;/p&gt;
+          &lt;!-- Button to Explore Products --&gt;
+          &lt;button class&#x3D;&quot;btn btn-primary text-gray-300&quot; routerLink&#x3D;&quot;products&quot;&gt;Explore Our Products&lt;/button&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Spacer for Layout --&gt;
+  &lt;div class&#x3D;&quot;h-24&quot;&gt;&lt;/div&gt;
+  </code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
@@ -253,8 +265,8 @@ export class HomeComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="flex w-full items-center justify-center rounded-2xl ">        <div class="hero min-h-screen w-11/12 rounded-2xl shadow-none bg-none" style="background-image: url(https://picsum.photos/1280/720.webp);">                <div class="hero-overlay bg-opacity-60"></div>                <div class="hero-content text-center text-neutral-content">                    <div class="max-w-md">                        <h1 class="mb-5 text-5xl font-bold text-fuchsia-50 ">Welcome to our Shop</h1>            <p class="mb-5 text-slate-400">Explore our wide range of products and find what you need.</p>            <button class="btn btn-primary" routerLink="products">Explore Our Products</button>          </div>        </div>      </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'ImpressumComponent', 'selector': 'pm-impressum'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'},{'name': 'TestComponent', 'selector': 'pm-test'}];
+        var COMPONENT_TEMPLATE = '<div><!-- Main Container for Welcome Section --><div class="flex w-full items-center justify-center rounded-2xl">    <!-- Hero Section with Background Image -->    <div class="hero min-h-screen w-11/12 rounded-2xl shadow-none bg-none"          style="background-image: url(https://picsum.photos/1280/720.webp);">      <!-- Overlay to Enhance Text Visibility -->      <div class="hero-overlay bg-opacity-60"></div>        <!-- Content Inside the Hero Section -->      <div class="hero-content text-center text-neutral-content">        <div class="max-w-md">          <!-- Welcome Message -->          <h1 class="mb-5 text-5xl font-bold text-fuchsia-50">Welcome to our Shop</h1>          <p class="mb-5 text-slate-300">Explore our wide range of products and find what you need.</p>          <!-- Button to Explore Products -->          <button class="btn btn-primary text-gray-300" routerLink="products">Explore Our Products</button>        </div>      </div>    </div>  </div>    <!-- Spacer for Layout -->  <div class="h-24"></div>  </div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
 </script>
