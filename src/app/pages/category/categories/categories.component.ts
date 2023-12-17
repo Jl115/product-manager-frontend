@@ -9,13 +9,13 @@ import { RouterLink } from '@angular/router';
 // Importing custom DTOs and form modules.
 import { CategoryShowDto } from 'src/app/openapi-client';
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule, Validators } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 // Decorator to define metadata for the CategoriesComponent.
 @Component({
   selector: 'pm-categories', // Custom element selector to be used in templates.
   standalone: true, // Enabling standalone components feature.
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule, MatIconModule ], // Importing necessary modules.
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule, MatIconModule], // Importing necessary modules.
   templateUrl: './categories.component.html', // Path to the component's template.
   styleUrls: ['./categories.component.scss'], // Path to the component's styles.
 })
@@ -56,10 +56,11 @@ export class CategoriesComponent implements OnInit {
 
   // Method to handle search functionality.
   onSearch() {
+    // Filtering categories based on search text.
     this.filteredCategories = this.searchText ? 
       this.categories.filter(category => 
         category.name.toLowerCase().includes(this.searchText.toLowerCase())
       ) : 
-      this.categories; // Filtering categories based on search text.
+      this.categories;
   }
 }

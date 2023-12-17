@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { UserControllerService } from 'src/app/openapi-client/api/api';
 import Swal from 'sweetalert2';
 
@@ -25,6 +25,7 @@ export class RegisterComponent {
   registerForm: FormGroup;  // FormGroup to handle registration form data.
   isError = false;          // Flag to track if there's an error during registration.
 
+  // Constructor to initialize the component with necessary services.
   constructor(
     private formBuilder: FormBuilder,             // FormBuilder to simplify form creation.
     private userControllerService: UserControllerService // Service to handle user registration.

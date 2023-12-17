@@ -8,7 +8,7 @@
   <div class="flex w-full justify-center items-center">
     <!-- Input field for searching categories. Uses two-way binding with searchText and calls onSearch() on model change -->
     <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" 
-           placeholder="Type here to Search a Category" 
+           placeholder="Type here to Search a Product" 
            class="input input-bordered input-info w-11/12 max-w mb-5 fixed z-40" />
   </div>
   
@@ -34,7 +34,7 @@
             <!-- Card Actions for Edit or Details -->
             <div class="card-actions justify-end">
               <button class="btn btn-primary" routerLink="edit/{{category.id}}" *ngIf="isEdit">Edit</button>
-              <button class="btn btn-primary" routerLink="{{category.id}}" *ngIf="!isEdit">Details</button>
+              <button class="btn btn-primary" routerLink="/products/{{product.id}}" *ngIf="!isEdit">Details</button>
             </div>
           </div>
         </div>
@@ -48,13 +48,13 @@
   <!-- Edit/Select Mode Toggle Button -->
   <button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
           (click)="isEdit = !isEdit">
-    Edit Categories</button>
+    Edit Product</button>
   
   <!-- Template for Select Mode Button -->
   <ng-template #selectCat>
     <!-- Alternate button shown when isEdit is true -->
     <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
             (click)="isEdit = !isEdit">
-      Select Categories</button>
+      Select Product</button>
   </ng-template>
   

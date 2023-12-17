@@ -8,8 +8,8 @@ import { CategoriesComponent } from './pages/category/categories/categories.comp
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { CategoryCreateComponent } from './pages/category/category-create-edit/category-create.component';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
-import { ProductCreateComponent } from './pages/product/product-create/product-create.component';
-import { ProductEditComponent } from './pages/product/product-edit/product-edit.component';
+import { ProductCreateComponent } from './pages/product/product-create-edit/product-create.component';
+
 
 import { adminGuard } from './guards/admin.guard';
 import { ProductByCategoryComponent } from './pages/product/product-by-category/product-by-category.component';
@@ -82,7 +82,7 @@ const routes: Routes = [
       },
       {
         path: 'edit/:id', // Route for editing a specific product
-        component: ProductEditComponent, // Component for editing a product
+        component: ProductCreateComponent, // Component for editing a product
       },
       {
         path: ':id', // Route for viewing product details
