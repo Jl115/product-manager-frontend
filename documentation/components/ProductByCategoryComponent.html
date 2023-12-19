@@ -836,7 +836,7 @@ export class ProductByCategoryComponent implements OnInit {
   &lt;div class&#x3D;&quot;flex w-full justify-center items-center&quot;&gt;
     &lt;!-- Input field for searching categories. Uses two-way binding with searchText and calls onSearch() on model change --&gt;
     &lt;input type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;searchText&quot; (ngModelChange)&#x3D;&quot;onSearch()&quot; 
-           placeholder&#x3D;&quot;Type here to Search a Category&quot; 
+           placeholder&#x3D;&quot;Type here to Search a Product&quot; 
            class&#x3D;&quot;input input-bordered input-info w-11/12 max-w mb-5 fixed z-40&quot; /&gt;
   &lt;/div&gt;
   
@@ -851,7 +851,7 @@ export class ProductByCategoryComponent implements OnInit {
       &lt;div *ngFor&#x3D;&quot;let product of filterProductsInCategory(category, searchText)&quot; class&#x3D;&quot;z-0&quot;&gt;
         &lt;div class&#x3D;&quot;card w-96 glass z-0 h-96&quot;&gt;
           &lt;!-- Product Image --&gt;
-          &lt;figure&gt;&lt;img src&#x3D;&quot;{{product.image}}&quot; alt&#x3D;&quot;Product Image&quot;/&gt;&lt;/figure&gt;
+          &lt;figure class&#x3D;&quot;h-52&quot;&gt;&lt;img src&#x3D;&quot;{{product.image}}&quot; alt&#x3D;&quot;Product Image&quot;/&gt;&lt;/figure&gt;
           &lt;!-- Product Details --&gt;
           &lt;div class&#x3D;&quot;card-body&quot;&gt;
             &lt;h2 class&#x3D;&quot;card-title&quot;&gt;{{product.name}}&lt;/h2&gt; &lt;!-- Product name --&gt;
@@ -861,8 +861,8 @@ export class ProductByCategoryComponent implements OnInit {
             &lt;/div&gt;
             &lt;!-- Card Actions for Edit or Details --&gt;
             &lt;div class&#x3D;&quot;card-actions justify-end&quot;&gt;
-              &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;edit/{{category.id}}&quot; *ngIf&#x3D;&quot;isEdit&quot;&gt;Edit&lt;/button&gt;
-              &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;{{category.id}}&quot; *ngIf&#x3D;&quot;!isEdit&quot;&gt;Details&lt;/button&gt;
+              &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;/products/edit/{{category.id}}&quot; *ngIf&#x3D;&quot;isEdit&quot;&gt;Edit&lt;/button&gt;
+              &lt;button class&#x3D;&quot;btn btn-primary&quot; routerLink&#x3D;&quot;/products/{{product.id}}&quot; *ngIf&#x3D;&quot;!isEdit&quot;&gt;Details&lt;/button&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
@@ -876,14 +876,14 @@ export class ProductByCategoryComponent implements OnInit {
   &lt;!-- Edit/Select Mode Toggle Button --&gt;
   &lt;button *ngIf&#x3D;&quot;!isEdit; else selectCat&quot; class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-32 right-10&quot;
           (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
-    Edit Categories&lt;/button&gt;
+    Edit Product&lt;/button&gt;
   
   &lt;!-- Template for Select Mode Button --&gt;
   &lt;ng-template #selectCat&gt;
     &lt;!-- Alternate button shown when isEdit is true --&gt;
     &lt;button *ngIf&#x3D;&quot;isEdit&quot; class&#x3D;&quot;btn btn-secondary w-38 mt-10 fixed bottom-32 right-10&quot;
             (click)&#x3D;&quot;isEdit &#x3D; !isEdit&quot;&gt;
-      Select Categories&lt;/button&gt;
+      Select Product&lt;/button&gt;
   &lt;/ng-template&gt;
   </code></pre>
     </div>
@@ -920,8 +920,8 @@ export class ProductByCategoryComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Loading Indicator Section --><div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">    <!-- This div is displayed when isLoading is true, showing a loading spinner centered in the view -->    <span class="loading loading-infinity w-28 h-28 bg-primary"></span>  </div>    <!-- Search Input Section -->  <div class="flex w-full justify-center items-center">    <!-- Input field for searching categories. Uses two-way binding with searchText and calls onSearch() on model change -->    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()"            placeholder="Type here to Search a Category"            class="input input-bordered input-info w-11/12 max-w mb-5 fixed z-40" />  </div>    <!-- Spacer for Layout -->  <div class="h-20"></div>    <!-- Categories and Products Display Section -->  <div class="flex flex-wrap justify-center gap-y-8 gap-x-2 w-full">    <!-- Loop through filteredCategories to display each category -->    <div *ngFor="let category of filteredCategories" class="z-0 flex flex-wrap justify-center gap-y-8 gap-x-2 w-full">      <!-- Nested loop to display products in each category -->      <div *ngFor="let product of filterProductsInCategory(category, searchText)" class="z-0">        <div class="card w-96 glass z-0 h-96">          <!-- Product Image -->          <figure><img src="{{product.image}}" alt="Product Image"/></figure>          <!-- Product Details -->          <div class="card-body">            <h2 class="card-title">{{product.name}}</h2> <!-- Product name -->            <div class="flex">              <p>Price: {{product.price | currency}}</p> <!-- Product price, formatted as currency -->              <p>On Stock: {{product.stock}}</p> <!-- Stock information -->            </div>            <!-- Card Actions for Edit or Details -->            <div class="card-actions justify-end">              <button class="btn btn-primary" routerLink="edit/{{category.id}}" *ngIf="isEdit">Edit</button>              <button class="btn btn-primary" routerLink="{{category.id}}" *ngIf="!isEdit">Details</button>            </div>          </div>        </div>      </div>    </div>  </div>    <!-- Spacer for Layout -->  <div class="h-24"></div>    <!-- Edit/Select Mode Toggle Button -->  <button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"          (click)="isEdit = !isEdit">    Edit Categories</button>    <!-- Template for Select Mode Button -->  <ng-template #selectCat>    <!-- Alternate button shown when isEdit is true -->    <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"            (click)="isEdit = !isEdit">      Select Categories</button>  </ng-template>  </div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
+        var COMPONENT_TEMPLATE = '<div><!-- Loading Indicator Section --><div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">    <!-- This div is displayed when isLoading is true, showing a loading spinner centered in the view -->    <span class="loading loading-infinity w-28 h-28 bg-primary"></span>  </div>    <!-- Search Input Section -->  <div class="flex w-full justify-center items-center">    <!-- Input field for searching categories. Uses two-way binding with searchText and calls onSearch() on model change -->    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()"            placeholder="Type here to Search a Product"            class="input input-bordered input-info w-11/12 max-w mb-5 fixed z-40" />  </div>    <!-- Spacer for Layout -->  <div class="h-20"></div>    <!-- Categories and Products Display Section -->  <div class="flex flex-wrap justify-center gap-y-8 gap-x-2 w-full">    <!-- Loop through filteredCategories to display each category -->    <div *ngFor="let category of filteredCategories" class="z-0 flex flex-wrap justify-center gap-y-8 gap-x-2 w-full">      <!-- Nested loop to display products in each category -->      <div *ngFor="let product of filterProductsInCategory(category, searchText)" class="z-0">        <div class="card w-96 glass z-0 h-96">          <!-- Product Image -->          <figure class="h-52"><img src="{{product.image}}" alt="Product Image"/></figure>          <!-- Product Details -->          <div class="card-body">            <h2 class="card-title">{{product.name}}</h2> <!-- Product name -->            <div class="flex">              <p>Price: {{product.price | currency}}</p> <!-- Product price, formatted as currency -->              <p>On Stock: {{product.stock}}</p> <!-- Stock information -->            </div>            <!-- Card Actions for Edit or Details -->            <div class="card-actions justify-end">              <button class="btn btn-primary" routerLink="/products/edit/{{category.id}}" *ngIf="isEdit">Edit</button>              <button class="btn btn-primary" routerLink="/products/{{product.id}}" *ngIf="!isEdit">Details</button>            </div>          </div>        </div>      </div>    </div>  </div>    <!-- Spacer for Layout -->  <div class="h-24"></div>    <!-- Edit/Select Mode Toggle Button -->  <button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"          (click)="isEdit = !isEdit">    Edit Product</button>    <!-- Template for Select Mode Button -->  <ng-template #selectCat>    <!-- Alternate button shown when isEdit is true -->    <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"            (click)="isEdit = !isEdit">      Select Product</button>  </ng-template>  </div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProductByCategoryComponent'};
 </script>

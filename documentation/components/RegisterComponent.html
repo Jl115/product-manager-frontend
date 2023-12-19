@@ -330,8 +330,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/pages/auth/register/register.component.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/pages/auth/register/register.component.ts:53</a></div>
                         </td>
                     </tr>
 
@@ -415,7 +415,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from &#x27;@a
 import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
 import { MatInputModule } from &#x27;@angular/material/input&#x27;;
 import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
-import {MatCardModule} from &#x27;@angular/material/card&#x27;;
+import { MatCardModule } from &#x27;@angular/material/card&#x27;;
 import { UserControllerService } from &#x27;src/app/openapi-client/api/api&#x27;;
 import Swal from &#x27;sweetalert2&#x27;;
 
@@ -437,6 +437,7 @@ export class RegisterComponent {
   registerForm: FormGroup;  // FormGroup to handle registration form data.
   isError &#x3D; false;          // Flag to track if there&#x27;s an error during registration.
 
+  // Constructor to initialize the component with necessary services.
   constructor(
     private formBuilder: FormBuilder,             // FormBuilder to simplify form creation.
     private userControllerService: UserControllerService // Service to handle user registration.
@@ -500,7 +501,7 @@ export class RegisterComponent {
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div&gt;
   &lt;!-- A material card component is used as a container for the form --&gt;
-  &lt;mat-card&gt;
+  &lt;mat-card class&#x3D;&quot;glass card&quot;&gt;
     &lt;mat-card-content&gt;
       &lt;!-- The form is bound to the &#x27;registerForm&#x27; FormGroup object in the component class --&gt;
       &lt;form [formGroup]&#x3D;&quot;registerForm&quot; (ngSubmit)&#x3D;&quot;register()&quot;&gt;
@@ -657,8 +658,8 @@ mat-card {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>  <!-- A material card component is used as a container for the form -->  <mat-card>    <mat-card-content>      <!-- The form is bound to the \'registerForm\' FormGroup object in the component class -->      <form [formGroup]="registerForm" (ngSubmit)="register()">        <!-- Each mat-form-field represents a form control where users can input data -->        <!-- Input field for First Name -->        <mat-form-field>          <input matInput placeholder="First Name" formControlName="firstName" required>        </mat-form-field>        <!-- Input field for Last Name -->        <mat-form-field>          <input matInput placeholder="Last Name" formControlName="lastName" required>        </mat-form-field>        <!-- Input field for Street -->        <mat-form-field>          <input matInput placeholder="Street" formControlName="street" required>        </mat-form-field>        <!-- Input field for ZIP -->        <mat-form-field>          <input matInput placeholder="ZIP" formControlName="zip" required>        </mat-form-field>        <!-- Input field for City -->        <mat-form-field>          <input matInput placeholder="City" formControlName="city" required>        </mat-form-field>        <!-- Input field for Country -->        <mat-form-field>          <input matInput placeholder="Country" formControlName="country" required>        </mat-form-field>        <!-- Input field for Phone with validation for length -->        <mat-form-field>          <input matInput placeholder="Phone" formControlName="phone" maxlength="15" minlength="0" type="tel">        </mat-form-field>        <!-- Input field for Mobile Phone with validation for length -->        <mat-form-field>          <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" maxlength="15" minlength="0" type="tel">        </mat-form-field>        <!-- Input field for Email with type email -->        <mat-form-field>          <input matInput placeholder="Email" formControlName="email" required type="email">        </mat-form-field>        <!-- Input field for Password with type password -->        <mat-form-field>          <input matInput placeholder="Password" formControlName="password" required type="password">        </mat-form-field>        <!-- Submit button for the form -->        <button mat-raised-button color="primary" type="submit">Register</button>      </form>    </mat-card-content>  </mat-card></div></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
+        var COMPONENT_TEMPLATE = '<div><div>  <!-- A material card component is used as a container for the form -->  <mat-card class="glass card">    <mat-card-content>      <!-- The form is bound to the \'registerForm\' FormGroup object in the component class -->      <form [formGroup]="registerForm" (ngSubmit)="register()">        <!-- Each mat-form-field represents a form control where users can input data -->        <!-- Input field for First Name -->        <mat-form-field>          <input matInput placeholder="First Name" formControlName="firstName" required>        </mat-form-field>        <!-- Input field for Last Name -->        <mat-form-field>          <input matInput placeholder="Last Name" formControlName="lastName" required>        </mat-form-field>        <!-- Input field for Street -->        <mat-form-field>          <input matInput placeholder="Street" formControlName="street" required>        </mat-form-field>        <!-- Input field for ZIP -->        <mat-form-field>          <input matInput placeholder="ZIP" formControlName="zip" required>        </mat-form-field>        <!-- Input field for City -->        <mat-form-field>          <input matInput placeholder="City" formControlName="city" required>        </mat-form-field>        <!-- Input field for Country -->        <mat-form-field>          <input matInput placeholder="Country" formControlName="country" required>        </mat-form-field>        <!-- Input field for Phone with validation for length -->        <mat-form-field>          <input matInput placeholder="Phone" formControlName="phone" maxlength="15" minlength="0" type="tel">        </mat-form-field>        <!-- Input field for Mobile Phone with validation for length -->        <mat-form-field>          <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" maxlength="15" minlength="0" type="tel">        </mat-form-field>        <!-- Input field for Email with type email -->        <mat-form-field>          <input matInput placeholder="Email" formControlName="email" required type="email">        </mat-form-field>        <!-- Input field for Password with type password -->        <mat-form-field>          <input matInput placeholder="Password" formControlName="password" required type="password">        </mat-form-field>        <!-- Submit button for the form -->        <button mat-raised-button color="primary" type="submit">Register</button>      </form>    </mat-card-content>  </mat-card></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RegisterComponent'};
 </script>

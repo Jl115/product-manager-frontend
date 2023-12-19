@@ -607,13 +607,13 @@ import { RouterLink } from &#x27;@angular/router&#x27;;
 // Importing custom DTOs and form modules.
 import { CategoryShowDto } from &#x27;src/app/openapi-client&#x27;;
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule, Validators } from &#x27;@angular/forms&#x27;;
-import {MatIconModule} from &#x27;@angular/material/icon&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
 
 // Decorator to define metadata for the CategoriesComponent.
 @Component({
   selector: &#x27;pm-categories&#x27;, // Custom element selector to be used in templates.
   standalone: true, // Enabling standalone components feature.
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule, MatIconModule ], // Importing necessary modules.
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule, MatIconModule], // Importing necessary modules.
   templateUrl: &#x27;./categories.component.html&#x27;, // Path to the component&#x27;s template.
   styleUrls: [&#x27;./categories.component.scss&#x27;], // Path to the component&#x27;s styles.
 })
@@ -654,11 +654,12 @@ export class CategoriesComponent implements OnInit {
 
   // Method to handle search functionality.
   onSearch() {
+    // Filtering categories based on search text.
     this.filteredCategories &#x3D; this.searchText ? 
       this.categories.filter(category &#x3D;&gt; 
         category.name.toLowerCase().includes(this.searchText.toLowerCase())
       ) : 
-      this.categories; // Filtering categories based on search text.
+      this.categories;
   }
 }
 </code></pre>
@@ -744,7 +745,7 @@ export class CategoriesComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><!-- Loading Indicator Section --><div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">    <!-- Displays a loading spinner while data is being loaded or processed -->    <span class="loading loading-infinity w-28 h-28 bg-primary"></span></div><!-- Search Input Section --><div class="flex w-full justify-center items-center">    <!-- Search input for categories, updates searchText and triggers onSearch() on change -->    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()"           placeholder="Type here to Search a Category"           class="input input-bordered input-info w-11/12 max-w mt-8 fixed z-40" /></div><!-- Spacer for layout --><div class="h-20"></div><!-- Category Display and Interaction Section --><div class="flex flex-col w-full justify-center">    <!-- Loop through filteredCategories to display each category -->    <div *ngFor="let category of filteredCategories" class="flex justify-center">        <!-- Edit mode: Button to navigate to edit page for the selected category -->        <button *ngIf="isEdit" class="btn glass w-11/12 mt-2"                 routerLink="edit/{{category.id}}">{{category.name}}</button>        <!-- Selection mode: Button to navigate to products page for the selected category -->        <button *ngIf="!isEdit" class="btn glass w-11/12 mt-2"                routerLink="{{category.id}}/products">{{category.name}}</button>    </div></div><div class="h-24"></div><!-- Toggle Button between Edit and Select Modes --><button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"        (click)="isEdit = !isEdit">    Edit Categories</button><!-- Template for Select Mode Button --><ng-template #selectCat>    <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"            (click)="isEdit = !isEdit">        Select Categories</button></ng-template></div>'
-    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'ProductEditComponent', 'selector': 'pm-product-edit'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'pm-admin'},{'name': 'AppComponent', 'selector': 'pm-root'},{'name': 'CategoriesComponent', 'selector': 'pm-categories'},{'name': 'CategoryCreateComponent', 'selector': 'pm-category-create'},{'name': 'FooterComponent', 'selector': 'pm-footer'},{'name': 'HeaderComponent', 'selector': 'pm-header'},{'name': 'HomeComponent', 'selector': 'pm-home'},{'name': 'LoginComponent', 'selector': 'pm-login'},{'name': 'PageNotFoundComponent', 'selector': 'pm-page-not-found'},{'name': 'ProductByCategoryComponent', 'selector': 'pm-product-by-category'},{'name': 'ProductComponent', 'selector': 'pm-product'},{'name': 'ProductCreateComponent', 'selector': 'pm-product-create'},{'name': 'ProductDetailComponent', 'selector': 'pm-product-detail'},{'name': 'RegisterComponent', 'selector': 'pm-register'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CategoriesComponent'};
 </script>

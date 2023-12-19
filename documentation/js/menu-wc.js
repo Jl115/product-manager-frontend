@@ -128,9 +128,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/ProductDetailComponent.html" data-type="entity-link" >ProductDetailComponent</a>
                             </li>
                             <li class="link">
-                                <a href="components/ProductEditComponent.html" data-type="entity-link" >ProductEditComponent</a>
-                            </li>
-                            <li class="link">
                                 <a href="components/RegisterComponent.html" data-type="entity-link" >RegisterComponent</a>
                             </li>
                         </ul>
