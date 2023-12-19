@@ -33,7 +33,7 @@
             </div>
             <!-- Card Actions for Edit or Details -->
             <div class="card-actions justify-end">
-              <button class="btn btn-primary" routerLink="edit/{{category.id}}" *ngIf="isEdit">Edit</button>
+              <button class="btn btn-primary" routerLink="/products/edit/{{category.id}}" *ngIf="isEdit">Edit</button>
               <button class="btn btn-primary" routerLink="/products/{{product.id}}" *ngIf="!isEdit">Details</button>
             </div>
           </div>

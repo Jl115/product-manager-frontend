@@ -1,1 +1,103 @@
-<p>product-create works!</p>
+<!-- Main Container -->
+<div class="flex flex-col justify-center items-center h-5/6">
+    <!-- Form Container with Background -->
+    <div class="glass card w-6/12 rounded-xl h-4/6 flex flex-row justify-center">
+      <!-- Form Definition -->
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        
+  
+        <!-- Input Fields and Controls -->
+        <div class="grid grid-cols-2 w-full gap-2 h-full  ">
+<!-- Dynamic Title: Create or Edit based on isEdit -->
+<div class="col-span-2" >
+    <h1 *ngIf="!isEdit; else elseEdit" class="flex justify-center">Create a Product</h1>
+  </div>
+  <ng-template #elseEdit>
+    <h1 class="flex justify-center">Edit Product</h1>
+  </ng-template>
+            <!-- Category Name Input -->
+          <div>
+            <h2 class="">Name the Product</h2>
+
+          <input type="text" placeholder="Type here" formControlName="name"
+                 class="input input-bordered input-primary w-full max-w-xs justify-center flex" />
+          </div>
+          <div>
+            <h2 class="">Produkt Sku</h2>
+
+          <input type="text" placeholder="Type here" formControlName="sku"
+                 class="input input-bordered input-primary w-full max-w-xs justify-center flex" />
+          </div>
+          <div>
+            <h2 class="">Description of Product</h2>
+
+          <input type="text" placeholder="Type here" formControlName="description"
+                 class="input input-bordered input-primary w-full max-w-xs justify-center flex" />
+          </div>
+          <div>
+            <h2 class="">Image of the Product</h2>
+
+          <input type="url" placeholder="Type here" formControlName="image"
+                 class="input input-bordered input-primary w-full max-w-xs justify-center flex" />
+          </div>
+          <div>
+            <h2 class="">Price of Product</h2>
+
+          <input type="number" placeholder="Type here" formControlName="price"
+                 class="input input-bordered input-primary w-full max-w-xs justify-center flex" />
+          </div>
+          <div>
+            <h2 class="">Stock of the Product</h2>
+
+          <input type="number" placeholder="Type here" formControlName="stock"
+                 class="input input-bordered input-primary w-full max-w-xs justify-center flex" />
+          </div>
+          <div class="col-span-2">
+
+            <h2 class="text-center">Category</h2>
+            <select formControlName="categoryId" class="select select-secondary w-full max-w-full ">
+                <option disabled selected>Select Category</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+              </select>
+              
+
+            </div>
+          
+          <!-- Toggle for Active Status -->
+          <div class="col-span-2 ">
+            <div class="flex flex-col">
+                <div class="flex flex-col w-100 justify-center items-center">
+                  <div class="flex items-center">
+                    <span class="label-text mt-5">Is Active ?</span>
+                  </div>
+                  <!-- Toggle Switch for Active Status -->
+                  <div class="form-control w-52">
+                    <label class="cursor-pointer label">
+                      no
+                      <input type="checkbox" class="toggle toggle-info" formControlName="isActive" />
+                      yes
+                    </label>
+                  </div>
+      
+                  
+                </div>
+              </div>
+          </div>
+          <!-- Dynamic Button: Create or Update based on isEdit -->
+        <div class="self-end  col-span-2 mb-7">
+            <!-- Dynamic Button: Create or Update based on isEdit -->
+            <div *ngIf="!isEdit; else elseDelete">
+              <button class="btn btn-secondary w-full" type="submit">Create</button>
+            </div>
+            <ng-template #elseDelete>
+              <button class="btn btn-secondary w-full" type="submit">Update</button>
+            </ng-template>
+          </div>
+        </div>
+        
+      </form>
+ 
+  </div>
+  <button  *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
+  (click)="delete()">
+Delete Product</button>
