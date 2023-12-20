@@ -1,44 +1,44 @@
+// Utilizes Angular's dependency injection to fetch service instances within a function
 import { inject } from '@angular/core';
-// Importing the inject function to get an instance of a service within a function
 
+// Imports necessary components for route guarding and navigation in Angular
 import { CanActivateFn, Router } from '@angular/router';
-// Importing CanActivateFn and Router from Angular's router module for guard implementation and navigation
 
+// Incorporates jwtDecode function to decode JSON Web Tokens
 import { jwtDecode } from 'jwt-decode';
-// Importing jwtDecode for decoding JSON Web Tokens
 
+// Defines an interface for the structure of the token payload
 interface TokenPayload {
-  roles: string[];  
+  roles: string[];
 }
 
+// Implements a route guard using the CanActivateFn interface
 export const adminGuard: CanActivateFn = (route, state) => {
-  // Declaring a guard function that implements the CanActivateFn interface
-
+  // Retrieves an instance of the Router service for navigation purposes
   const router = inject(Router);
-  // Using Angular's inject function to get an instance of the Router service
 
   try {
+    // Retrieves the access token from local storage
     const token = localStorage.getItem('ACCESS_TOKEN');
-    // Attempting to retrieve the access token from local storage
 
     if (token) {
+      // Decodes the JWT to extract the payload
       const payload: TokenPayload = jwtDecode(token);
-      // Decoding the JWT token to get the payload
 
+      // Checks if the user's roles include 'admin'
       if (payload.roles.includes('admin')) {
-        // Checking if the decoded token payload includes the 'admin' role
+        // Grants access to the route for admin users
         return true;
-        // Returning true allows the route activation (navigation to the route is permitted)
       }
     }
   } catch (error) {
+    // Handles any errors in the token decoding process
     console.error('Error decoding token', error);
-    // Logging an error message in case of an exception during token decoding
   }
 
+  // Redirects non-admin users to the login page
   router.navigate(['/auth/login']);
-  // Navigating to the login route if the token is not present or valid
 
+  // Denies route access for non-admin users
   return false;
-  // Returning false prevents the route activation (navigation to the route is not permitted)
 };

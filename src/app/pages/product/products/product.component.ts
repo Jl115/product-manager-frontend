@@ -7,23 +7,18 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
 // Angular component for managing and displaying products
 @Component({
-  selector: 'pm-product',  // Component's custom HTML tag
-  standalone: true,       // Indicates a standalone component
-  imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
-    FormsModule,
-    RouterLink
-  ],                      // Imports necessary modules
-  templateUrl: './product.component.html',  // HTML template for the component
-  styleUrls: ['./product.component.scss']   // Styles for the component
+  selector: 'pm-product', // Component's custom HTML tag
+  standalone: true, // Indicates a standalone component
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterLink], // Imports necessary modules
+  templateUrl: './product.component.html', // HTML template for the component
+  styleUrls: ['./product.component.scss'], // Styles for the component
 })
 export class ProductComponent implements OnInit {
-  categories: ProductShowDto[] = [];       // Array to store product data
+  categories: ProductShowDto[] = []; // Array to store product data
   filteredProducts: ProductShowDto[] = []; // Array for products filtered by search
-  isLoading: boolean = false;              // Flag to indicate if data is loading
-  isEdit: boolean = false;                 // Flag to indicate if the component is in edit mode
-  searchText: string = '';                 // String to store the search text
+  isLoading: boolean = false; // Flag to indicate if data is loading
+  isEdit: boolean = false; // Flag to indicate if the component is in edit mode
+  searchText: string = ''; // String to store the search text
 
   // Constructor to inject services and dependencies
   constructor(

@@ -1,18 +1,30 @@
+<!-- Main container for the product display, centered and in column layout -->
 <div class="flex w-full h-5/6 justify-center items-center flex-col">
-    <div class="card w-8/12 glass h-3/5">
-        <figure><img src="{{product?.image}}" alt="car!" class="w-full "/></figure>
-        <div class="card-body">
-          <h2 class="card-title items-center justify-center text-primary ">{{product?.name}}</h2>
-          <p>Description: <br>{{product?.description}}</p>
-            <p>Category: {{product?.category?.name}}</p>
-          <div class="card-actions justify-end">
-            <p>{{product?.price | currency}}</p>
-            <p>{{product?.stock}} stk</p>
-          </div>
-        </div>
+
+  <!-- Card container for displaying product details with glassmorphism style -->
+  <div class="card w-8/12 glass h-3/5">
+    <!-- Image container for the product image -->
+    <figure><img src="{{product?.image}}" alt="car!" class="w-full " /></figure>
+    <div class="card-body">
+      <!-- Displaying product name -->
+      <h2 class="card-title items-center justify-center text-primary ">{{product?.name}}</h2>
+      <!-- Displaying product description -->
+      <p>Description: <br>{{product?.description}}</p>
+      <!-- Displaying product category -->
+      <p>Category: {{product?.category?.name}}</p>
+      <!-- Container for product price and stock information -->
+      <div class="card-actions justify-end">
+        <!-- Displaying formatted product price -->
+        <p>{{product?.price | currency}}</p>
+        <!-- Displaying product stock quantity -->
+        <p>{{product?.stock}} stk</p>
       </div>
-      <div class="h-10"></div>
-      <button class="btn glass w-38 mt-10 "
-       (click)="navigateBack()" >
-    Back !</button>
+    </div>
+  </div>
+
+  <!-- Spacer for layout -->
+  <div class="h-10"></div>
+
+  <!-- Button to navigate back -->
+  <button class="btn glass w-38 mt-10" (click)="navigateBack()">Back !</button>
 </div>

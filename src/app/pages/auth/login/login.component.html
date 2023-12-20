@@ -1,45 +1,44 @@
+<!-- Angular reactive form setup with formGroup and a submit event handler -->
 <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-container">
-    <!-- Angular reactive form setup with formGroup and a submit event handler -->
-  
-    <div class="example-container">
-      <!-- Container for the email input field -->
-      <mat-form-field>
-        <!-- Angular Material form field component -->
-        <mat-label>Enter your email</mat-label>
-        <!-- Label for the email input field -->
-        <input matInput placeholder="pat@example.com" [formControl]="email" required>
-        <!-- Email input field with Material design, bound to the 'email' form control -->
-  
-        <mat-error *ngIf="email.invalid">{{ getErrorMessage('email') }}</mat-error>
-        <!-- Conditional Angular Material error message, displayed if the email is invalid -->
-      </mat-form-field>
-    </div>
-  
-    <div class="password-container">
-      <!-- Container for the password input field -->
-      <mat-form-field>
-        <!-- Angular Material form field component -->
-        <mat-label>Enter a Password</mat-label>
-        <!-- Label for the password input field -->
-        <input matInput placeholder="Password" [formControl]="password" required>
-        <!-- Password input field with Material design, bound to the 'password' form control -->
-  
-        <mat-error *ngIf="password.invalid">{{ getErrorMessage('password') }}</mat-error>
-        <!-- Conditional Angular Material error message, displayed if the password is invalid -->
-      </mat-form-field>
-    </div>
-  
-    <div class="button-container">
-      <!-- Container for the buttons -->
-      <button mat-raised-button color="primary" (click)="login()" class="button">Login</button>
-      <!-- Material design button for login, triggers the login function on click -->
-  
-      <div class="tiny-spacer"></div>
-      <!-- Spacer div for styling -->
-  
-      <button mat-raised-button color="primary" routerLink="/auth/register" class="button">Register</button>
-      <!-- Material design button for registering, navigates to the register route on click -->
-    </div>
-  
-  </form>
-  
+
+  <!-- Container for the email input field -->
+  <div class="example-container">
+    <!-- Angular Material form field component -->
+    <mat-form-field>
+      <!-- Label for the email input field -->
+      <mat-label>Enter your email</mat-label>
+      <!-- Email input field with Material design, bound to the 'email' form control -->
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+
+      <!-- Conditional Angular Material error message, displayed if the email is invalid -->
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage('email') }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Container for the password input field -->
+  <div class="password-container">
+    <!-- Angular Material form field component -->
+    <mat-form-field>
+      <!-- Label for the password input field -->
+      <mat-label>Enter a Password</mat-label>
+      <!-- Password input field with Material design, bound to the 'password' form control -->
+      <input matInput placeholder="Password" [formControl]="password" required>
+
+      <!-- Conditional Angular Material error message, displayed if the password is invalid -->
+      <mat-error *ngIf="password.invalid">{{ getErrorMessage('password') }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Container for the buttons -->
+  <div class="button-container">
+    <!-- Material design button for login, triggers the login function on click -->
+    <button mat-raised-button color="primary" (click)="login()" class="button">Login</button>
+
+    <!-- Spacer div for styling -->
+    <div class="tiny-spacer"></div>
+
+    <!-- Material design button for registering, navigates to the register route on click -->
+    <button mat-raised-button color="primary" routerLink="/auth/register" class="button">Register</button>
+  </div>
+
+</form>

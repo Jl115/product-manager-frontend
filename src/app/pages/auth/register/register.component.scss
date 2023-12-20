@@ -1,33 +1,38 @@
-@use '../../../../styles.scss' as styles;
+// Importing global styles
+@use "../../../../styles.scss" as styles;
+
+// Styling for the main div container
 div {
-    width: 100%;
-    height: 98%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 98%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  // Styling for the form box within the div
   .form-box {
     width: 60%;
     height: 50%;
     display: flex;
     padding: auto;
     margin: auto;
-
     align-items: center;
     justify-content: center;
     background-color: aqua;
-    
   }
 }
+
+// Styling for the material card component
 mat-card {
   max-width: 400px;
   min-height: 600px;
-  background-color: styles.$primary-color;
+  background-color: styles.$primary-color; // Using a variable from the imported styles
   box-shadow: 10px 5px 20px 0 rgba(0, 0, 0, 0.5);
   width: 60%;
-  height:40%;
+  height: 40%;
   display: flex;
   padding: auto;
   margin: auto;
@@ -35,25 +40,27 @@ mat-card {
   justify-content: center;
   grid-auto-flow: column;
 
+  // Styling for the form inside the material card
   form {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: 1fr ;
+    grid-template-rows: 1fr;
     grid-gap: 20px;
     align-items: center;
 
+    // Specific styling for material design raised buttons that are not disabled
     .mat-mdc-raised-button:not(:disabled) {
       grid-column: span 2;
       margin-left: 5rem;
       margin-right: 5rem;
       background-color: gray;
-      
     }
   }
 }
 
+// Styling for an example header image
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
 }

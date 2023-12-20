@@ -1,14 +1,16 @@
+/* Resets padding and margin for the header element to 0, for a clean layout */
+
 header {
-    padding: 0;
-    margin: 0;
-
-
+  padding: 0;
+  margin: 0;
 }
-.example-spacer {
-    flex: 1 1 auto;
-  }
-.tiny-spacer {
-    flex: 0.01  auto;
-  }
 
-  
+/* Sets this element to flexibly grow and shrink, taking up available space */
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Provides a minimal amount of flex space, almost acting like a thin divider */
+.tiny-spacer {
+  flex: 0.01 auto;
+}

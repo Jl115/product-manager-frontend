@@ -1,120 +1,124 @@
-import { Component, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
-// Importing Angular core elements for component creation and handling lifecycle hooks, event handling, and DOM manipulation
+// Angular core imports for creating components, managing lifecycle hooks, DOM manipulation, and event handling
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+  Output,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 
+// Import for common Angular directives like ngIf, ngFor
 import { CommonModule } from '@angular/common';
-// Importing CommonModule for common directives like ngIf, ngFor
 
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-// Importing various Material Design modules for UI components
+// Imports for Material Design components for a rich UI experience
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
+// Import for Angular RouterLink to enable navigation within the app
 import { RouterLink } from '@angular/router';
-// Importing RouterLink for router link directives in the template
 
+// jwtDecode for handling JWTs, Subscription for managing observables, and custom TokenService
 import { jwtDecode } from 'jwt-decode';
 import { Subscription } from 'rxjs';
 import { TokenService } from 'src/app/service/token.service';
-import { set } from 'mongoose';
-// Importing jwtDecode for decoding JSON Web Tokens
 
+// HeaderComponent class implementing OnInit and OnDestroy lifecycle hooks
 @Component({
   selector: 'pm-header',
-  // Declaring the component selector for embedding this component in other templates
-
   standalone: true,
-  // Enabling standalone component feature, making this component independent of any NgModule
-
-  imports: [ CommonModule, MatIconModule, MatButtonModule, MatToolbarModule, MatSidenavModule, RouterLink],
-  // Specifying the imports required for this standalone component
-
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    RouterLink,
+  ],
   templateUrl: './header.component.html',
-  // Linking to an external HTML template file for this component
-
-  styleUrls: ['./header.component.scss']
-  // Linking to an external SCSS stylesheet for this component
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  // HeaderComponent class implementing the OnChanges lifecycle hook
+  // Subscription to manage observable for token changes
   private tokenSubscription!: Subscription;
+
+  // Access to a DOM element using ViewChild
   @ViewChild('detailsElement') detailsElement: ElementRef | undefined;
-  // ViewChild decorator to access a DOM element, in this case, detailsElement
 
+  // Output decorator to emit sidebar state to parent components
   @Output() isSideBar = false;
-  // Output property to emit the sidebar's state, initially set to false
 
+  // EventEmitter to communicate changes to parent components
   @Output() newItemEvent = new EventEmitter<boolean>();
-  // Output event emitter to communicate with parent components
 
+  // Tracks login state
   isLogin: boolean = false;
-  // Property to track the login state
 
-  name: string = "Login";
-  // Property to hold the user's name or a default value
+  // Holds the user's name or a default value
+  name: string = 'Login';
 
+  // Tracks user's admin status and mouse enter events
   isEnter: boolean = false;
   isAdmin: boolean = false;
-  // Property to track mouse enter events
 
-
-
-  constructor(private renderer: Renderer2, private tokenService: TokenService) { }
-  // Constructor injecting Renderer2 for safe DOM manipulations
-
-
+  // Constructor with Renderer2 for DOM manipulations and TokenService for token management
+  constructor(
+    private renderer: Renderer2,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
-    this.tokenSubscription = this.tokenService.token$.subscribe(token => {
+    // Subscription to token changes
+    this.tokenSubscription = this.tokenService.token$.subscribe((token) => {
+      // Decodes the JWT token to extract the payload
       if (token) {
         try {
-          const payload: any = jwtDecode(token); 
-          if (payload.email) {
-            this.name = payload.email;
-            this.isLogin = true;
-          }
-          if (payload.roles.includes('admin')) {
-            // Checking if the decoded token payload includes the 'admin' role
-            this.isAdmin = true;
-            // Returning true allows the route activation (navigation to the route is permitted)
-          } else {
-            this.isAdmin = false;
-            // Returning false denies the route activation (navigation to the route is denied)
-          }
+          const payload: any = jwtDecode(token);
+          // Updates login status and name based on token payload
+          this.isLogin = payload ? true : false;
+          this.name = payload?.email || 'Login';
+          // Determines admin status from token payload
+          this.isAdmin = payload?.roles.includes('admin') || false;
         } catch (error) {
+          // Error handling for token decoding
           console.error('Error decoding token', error);
           this.isLogin = false;
         }
       } else {
-        this.name = "Login";
+        this.name = 'Login';
         this.isLogin = false;
       }
     });
   }
 
+  // Handles profile-related actions
   getProfile() {
-    // Method to handle profile related actions
+    // Updates login state and name for profile scenario
     this.isLogin = true;
-    this.name = "Profile";
-    // Updating the login state and name for profile scenario
+    this.name = 'Profile';
   }
 
+  // Toggles details element based on 'open' state
   toggleDetails(categories: HTMLElement, open: boolean) {
-    // Method to toggle the details element
     if (open) {
+      // Opens the details element if 'open' is true
       this.renderer.setAttribute(categories, 'open', 'true');
-      // If 'open' is true, set the 'open' attribute on the categories element
       setTimeout(() => {
+        // Closes the details element after a delay
         this.renderer.removeAttribute(categories, 'open');
-        // Scroll the categories element into view
       }, 3000);
     } else {
+      // Closes the details element immediately if 'open' is false
       this.renderer.removeAttribute(categories, 'open');
-      // Otherwise, remove the 'open' attribute from the categories element
     }
   }
+
   ngOnDestroy(): void {
+    // Unsubscribes from the token observable on component destruction
     this.tokenSubscription.unsubscribe();
   }
 }
-

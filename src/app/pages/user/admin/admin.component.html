@@ -7,9 +7,8 @@
 <!-- Search Input Section -->
 <div class="flex w-full justify-center items-center">
     <!-- Search input for categories, updates searchText and triggers onSearch() on change -->
-    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()"
-           placeholder="Type here to Search a User"
-           class="input input-bordered input-info w-11/12 max-w mt-8 fixed z-40" />
+    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Type here to Search a User"
+        class="input input-bordered input-info w-11/12 max-w mt-8 fixed z-40" />
 </div>
 
 <!-- Spacer for layout -->
@@ -20,11 +19,11 @@
     <!-- Loop through filteredCategories to display each category -->
     <div *ngFor="let category of filteredCategories" class="flex justify-center">
         <!-- Edit mode: Button to navigate to edit page for the selected category -->
-        <button *ngIf="isPromote" class="btn glass w-11/12 mt-2" 
-                 (click)="promoteAdmin(category.id!)">{{category.email}}</button>
+        <button *ngIf="isPromote" class="btn glass w-11/12 mt-2"
+            (click)="promoteAdmin(category.id!)">{{category.email}}</button>
         <!-- Selection mode: Button to navigate to products page for the selected category -->
-        <button *ngIf="!isPromote" class="btn glass w-11/12 mt-2"
-                >First Name: {{category.firstName}} | Last Name: {{category.lastName}} | Country: {{category.country}} | Email: {{category.email}} </button>
+        <button *ngIf="!isPromote" class="btn glass w-11/12 mt-2">First Name: {{category.firstName}} | Last Name:
+            {{category.lastName}} | Country: {{category.country}} | Email: {{category.email}} </button>
 
     </div>
 </div>
@@ -32,13 +31,9 @@
 
 <!-- Toggle Button between Edit and Select Modes -->
 <div class=" fixed bottom-32 w-full flex justify-center gap-2 ">
-    <button *ngIf="isPromote" class="btn btn-secondary w-38 mt-10 "
-        (click)="isPromote = !isPromote">
-    Show User</button>
-    <button *ngIf="!isPromote" class="btn btn-secondary w-38 mt-10"
-    (click)="isPromote = !isPromote ">
-Promote User</button>
-  
+    <button *ngIf="isPromote" class="btn btn-secondary w-38 mt-10 " (click)="isPromote = !isPromote">
+        Show User</button>
+    <button *ngIf="!isPromote" class="btn btn-secondary w-38 mt-10" (click)="isPromote = !isPromote ">
+        Promote User</button>
+
 </div>
-
-

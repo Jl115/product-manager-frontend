@@ -21,10 +21,9 @@ import { TokenService } from 'src/app/service/token.service';
 @Component({
   selector: 'pm-login', // Selector name for the component
   standalone: true, // Standalone components do not require a module
-
   templateUrl: './login.component.html', // Template file for the component
   styleUrls: ['./login.component.scss'], // Style file for the component
-  imports: [ // Modules and components imported for this component
+  imports: [
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
@@ -32,10 +31,11 @@ import { TokenService } from 'src/app/service/token.service';
     CommonModule,
     MatButtonModule,
     RouterLink,
-  ],
+  ], // Modules and components imported for this component
 })
 export class LoginComponent {
-  loginForm: FormGroup; // FormGroup to manage the login form
+  // FormGroup to manage the login form
+  loginForm: FormGroup;
 
   // FormControls with validation rules for email and password
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -49,7 +49,7 @@ export class LoginComponent {
   constructor(
     private userControllerService: UserControllerService, // Injecting UserControllerService
     private router: Router, // Injecting Angular Router
-    private tokenService: TokenService// Injecting AuthService
+    private tokenService: TokenService // Injecting TokenService
   ) {
     // Initializing loginForm with FormControls
     this.loginForm = new FormGroup({
@@ -60,12 +60,13 @@ export class LoginComponent {
 
   // Function to return error message based on validation errors
   getErrorMessage(type: string) {
-    if (type === 'mail' || type === 'email') {
+    if (type === 'email') {
       if (this.email.hasError('required')) {
         return 'You must enter a value'; // Error message for required email
       }
+      return this.email.hasError('email') ? 'Not a valid email' : ''; // Error for invalid email format
     }
-    if (type === 'pass' || type === 'password') {
+    if (type === 'password') {
       if (this.password.hasError('minlength')) {
         return 'Password must be at least 6 characters'; // Error for password minimum length
       } else if (this.password.hasError('required')) {
@@ -74,21 +75,19 @@ export class LoginComponent {
         return 'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character (@#$%^&+=)'; // Error for password pattern
       }
     }
-    return this.email.hasError('email') ? 'Not a valid email' : ''; // Error for invalid email format
+    return '';
   }
 
   // Function to handle the login process
   login() {
-    console.log("hello")
-    if (this.email.valid && this.password.valid) {
-
+    if (this.loginForm.valid) {
       // Making a login request if the form is valid
       this.userControllerService
         .login({ password: this.password.value!, email: this.email.value! })
         .subscribe(
           (response) => {
-            this.tokenService.setToken(response.token!); 
             // Handling successful login response
+            this.tokenService.setToken(response.token!);
             Swal.fire({
               title: 'Login successful',
               text: 'You are now logged in',
@@ -97,8 +96,8 @@ export class LoginComponent {
             }).then((result) => {
               if (result.isConfirmed || result.isDismissed) {
                 this.router.navigate(['/']).then(() => {
-     
-                  localStorage.setItem('ACCESS_TOKEN', response.token!); // Storing the access token
+                  // Storing the access token
+                  localStorage.setItem('ACCESS_TOKEN', response.token!);
                 });
               }
             });
@@ -114,7 +113,8 @@ export class LoginComponent {
           }
         );
     } else {
-      console.log('Form is not valid'); // Logging if the form is not valid
+      // Logging if the form is not valid
+      console.log('Form is not valid');
     }
   }
 }

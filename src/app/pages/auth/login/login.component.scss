@@ -1,40 +1,45 @@
-
+/* Styles for the login container, centering its content and setting its dimensions */
 .login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 20vh;
-    width: 20rem;
-    margin-top:100px ;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 20rem;
+  margin-top: 100px;
 }
+
+/* Full-width container, typically used to encapsulate elements */
 .example-container {
- width: 100%;
-
-    
+  width: 100%;
 }
+
+/* Full-width container for password field with bottom margin for spacing */
 .password-container {
- width: 100%;
- margin-bottom: 50px;
-    
+  width: 100%;
+  margin-bottom: 50px;
 }
-mat-form-field{
-    width: 100%;
-   
-}
-.button-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
 
-    .button-container {
-        display: flex;
-        width: 10%;
-        justify-content: space-between;
-    }
-    
-    .mat-mdc-raised-button:not(:disabled){
-        padding: 0 50px 0 50px;
-    }
+/* Sets form fields to occupy full width of their container */
+mat-form-field {
+  width: 100%;
+}
+
+/* Flex container for buttons, spreading them evenly across the available width */
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Nested flex container for buttons, possibly for a subgroup of smaller buttons */
+.button-container .button-container {
+  display: flex;
+  width: 10%;
+  justify-content: space-between;
+}
+
+/* Custom padding for Material Design raised buttons when enabled */
+.button-container .mat-mdc-raised-button:not(:disabled) {
+  padding: 0 50px 0 50px;
 }

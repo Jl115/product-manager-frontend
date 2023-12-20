@@ -8,8 +8,8 @@
 <div class="flex w-full justify-center items-center">
     <!-- Search input for categories, updates searchText and triggers onSearch() on change -->
     <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()"
-           placeholder="Type here to Search a Category"
-           class="input input-bordered input-info w-11/12 max-w mt-8 fixed z-40" />
+        placeholder="Type here to Search a Category"
+        class="input input-bordered input-info w-11/12 max-w mt-8 fixed z-40" />
 </div>
 
 <!-- Spacer for layout -->
@@ -20,11 +20,11 @@
     <!-- Loop through filteredCategories to display each category -->
     <div *ngFor="let category of filteredCategories" class="flex justify-center">
         <!-- Edit mode: Button to navigate to edit page for the selected category -->
-        <button *ngIf="isEdit" class="btn glass w-11/12 mt-2" 
-                routerLink="edit/{{category.id}}">{{category.name}}</button>
+        <button *ngIf="isEdit" class="btn glass w-11/12 mt-2"
+            routerLink="edit/{{category.id}}">{{category.name}}</button>
         <!-- Selection mode: Button to navigate to products page for the selected category -->
         <button *ngIf="!isEdit" class="btn glass w-11/12 mt-2"
-                routerLink="{{category.id}}/products">{{category.name}}</button>
+            routerLink="{{category.id}}/products">{{category.name}}</button>
 
     </div>
 </div>
@@ -32,12 +32,11 @@
 
 <!-- Toggle Button between Edit and Select Modes -->
 <button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
-        (click)="isEdit = !isEdit">
+    (click)="isEdit = !isEdit">
     Edit Categories</button>
 
 <!-- Template for Select Mode Button -->
 <ng-template #selectCat>
-    <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
-            (click)="isEdit = !isEdit">
+    <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10" (click)="isEdit = !isEdit">
         Select Categories</button>
 </ng-template>

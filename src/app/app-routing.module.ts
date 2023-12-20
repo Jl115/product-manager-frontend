@@ -10,12 +10,9 @@ import { CategoryCreateComponent } from './pages/category/category-create-edit/c
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './pages/product/product-create-edit/product-create.component';
 
-
 import { adminGuard } from './guards/admin.guard';
 import { ProductByCategoryComponent } from './pages/product/product-by-category/product-by-category.component';
 import { AdminComponent } from './pages/user/admin/admin.component';
-
-
 
 // Routes configuration
 const routes: Routes = [
@@ -64,7 +61,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: "admin",
+    path: 'admin',
     component: AdminComponent,
     canActivate: [adminGuard],
   },
@@ -98,6 +95,5 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-
 })
 export class AppRoutingModule {}

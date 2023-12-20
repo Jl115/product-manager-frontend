@@ -1,60 +1,57 @@
 <!-- Loading Indicator Section -->
 <div *ngIf="isLoading" class="h-full w-full flex items-center justify-center">
-    <!-- This div is displayed when isLoading is true, showing a loading spinner centered in the view -->
-    <span class="loading loading-infinity w-28 h-28 bg-primary"></span>
-  </div>
-  
-  <!-- Search Input Section -->
-  <div class="flex w-full justify-center items-center">
-    <!-- Input field for searching categories. Uses two-way binding with searchText and calls onSearch() on model change -->
-    <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" 
-           placeholder="Type here to Search a Product" 
-           class="input input-bordered input-info w-11/12 max-w mb-5 fixed z-40" />
-  </div>
-  
-  <!-- Spacer for Layout -->
-  <div class="h-20"></div>
-  
-  <!-- Categories and Products Display Section -->
-  <div class="flex flex-wrap justify-center gap-y-8 gap-x-2 w-full">
-    <!-- Loop through filteredCategories to display each category -->
-    <div *ngFor="let category of filteredCategories" class="z-0 flex flex-wrap justify-center gap-y-8 gap-x-2 w-full">
-      <!-- Nested loop to display products in each category -->
-      <div *ngFor="let product of filterProductsInCategory(category, searchText)" class="z-0">
-        <div class="card w-96 glass z-0 h-96">
-          <!-- Product Image -->
-          <figure class="h-52"><img src="{{product.image}}" alt="Product Image"/></figure>
-          <!-- Product Details -->
-          <div class="card-body">
-            <h2 class="card-title">{{product.name}}</h2> <!-- Product name -->
-            <div class="flex">
-              <p>Price: {{product.price | currency}}</p> <!-- Product price, formatted as currency -->
-              <p>On Stock: {{product.stock}}</p> <!-- Stock information -->
-            </div>
-            <!-- Card Actions for Edit or Details -->
-            <div class="card-actions justify-end">
-              <button class="btn btn-primary" routerLink="/products/edit/{{category.id}}" *ngIf="isEdit">Edit</button>
-              <button class="btn btn-primary" routerLink="/products/{{product.id}}" *ngIf="!isEdit">Details</button>
-            </div>
+  <!-- This div is displayed when isLoading is true, showing a loading spinner centered in the view -->
+  <span class="loading loading-infinity w-28 h-28 bg-primary"></span>
+</div>
+
+<!-- Search Input Section -->
+<div class="flex w-full justify-center items-center">
+  <!-- Input field for searching categories. Uses two-way binding with searchText and calls onSearch() on model change -->
+  <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Type here to Search a Product"
+    class="input input-bordered input-info w-11/12 max-w mb-5 fixed z-40" />
+</div>
+
+<!-- Spacer for Layout -->
+<div class="h-20"></div>
+
+<!-- Categories and Products Display Section -->
+<div class="flex flex-wrap justify-center gap-y-8 gap-x-2 w-full">
+  <!-- Loop through filteredCategories to display each category -->
+  <div *ngFor="let category of filteredCategories" class="z-0 flex flex-wrap justify-center gap-y-8 gap-x-2 w-full">
+    <!-- Nested loop to display products in each category -->
+    <div *ngFor="let product of filterProductsInCategory(category, searchText)" class="z-0">
+      <div class="card w-96 glass z-0 h-96">
+        <!-- Product Image -->
+        <figure class="h-52"><img src="{{product.image}}" alt="Product Image" /></figure>
+        <!-- Product Details -->
+        <div class="card-body">
+          <h2 class="card-title">{{product.name}}</h2> <!-- Product name -->
+          <div class="flex">
+            <p>Price: {{product.price | currency}}</p> <!-- Product price, formatted as currency -->
+            <p>On Stock: {{product.stock}}</p> <!-- Stock information -->
+          </div>
+          <!-- Card Actions for Edit or Details -->
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary" routerLink="/products/edit/{{category.id}}" *ngIf="isEdit">Edit</button>
+            <button class="btn btn-primary" routerLink="/products/{{product.id}}" *ngIf="!isEdit">Details</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <!-- Spacer for Layout -->
-  <div class="h-24"></div>
-  
-  <!-- Edit/Select Mode Toggle Button -->
-  <button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
-          (click)="isEdit = !isEdit">
-    Edit Product</button>
-  
-  <!-- Template for Select Mode Button -->
-  <ng-template #selectCat>
-    <!-- Alternate button shown when isEdit is true -->
-    <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
-            (click)="isEdit = !isEdit">
-      Select Product</button>
-  </ng-template>
-  
+</div>
+
+<!-- Spacer for Layout -->
+<div class="h-24"></div>
+
+<!-- Edit/Select Mode Toggle Button -->
+<button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
+  (click)="isEdit = !isEdit">
+  Edit Product</button>
+
+<!-- Template for Select Mode Button -->
+<ng-template #selectCat>
+  <!-- Alternate button shown when isEdit is true -->
+  <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10" (click)="isEdit = !isEdit">
+    Select Product</button>
+</ng-template>

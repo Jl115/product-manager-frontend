@@ -7,9 +7,8 @@
 <!-- Search Input Section -->
 <div class="flex w-full justify-center items-center">
   <!-- Input field for searching products. Uses two-way binding with searchText and calls onSearch() on model change -->
-  <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" 
-         placeholder="Type here to Search a Category" 
-         class="input input-bordered input-info w-11/12 max-w mb-5 fixed z-40" />
+  <input type="text" [(ngModel)]="searchText" (ngModelChange)="onSearch()" placeholder="Type here to Search a Category"
+    class="input input-bordered input-info w-11/12 max-w mb-5 fixed z-40" />
 </div>
 
 <!-- Spacer for Layout -->
@@ -22,7 +21,7 @@
     <!-- Product Card -->
     <div class="card w-96 glass z-0 h-96">
       <!-- Product Image -->
-      <figure class="h-52"><img src="{{product.image}}" alt="Product Image"/></figure>
+      <figure class="h-52"><img src="{{product.image}}" alt="Product Image" /></figure>
       <!-- Product Details -->
       <div class="card-body">
         <h2 class="card-title">{{product.name}}</h2> <!-- Product name -->
@@ -45,13 +44,12 @@
 
 <!-- Toggle Button for Edit Mode -->
 <button *ngIf="!isEdit; else selectCat" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
-        (click)="isEdit = !isEdit">
+  (click)="isEdit = !isEdit">
   Edit Categories</button>
 
 <!-- Template for Select Mode Button -->
 <ng-template #selectCat>
   <!-- Alternate button shown when isEdit is true -->
-  <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10"
-          (click)="isEdit = !isEdit">
+  <button *ngIf="isEdit" class="btn btn-secondary w-38 mt-10 fixed bottom-32 right-10" (click)="isEdit = !isEdit">
     Select Categories</button>
 </ng-template>

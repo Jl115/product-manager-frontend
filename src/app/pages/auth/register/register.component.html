@@ -1,11 +1,9 @@
+<!-- A material card component is used as a container for the form -->
 <div>
-  <!-- A material card component is used as a container for the form -->
   <mat-card class="glass card">
     <mat-card-content>
       <!-- The form is bound to the 'registerForm' FormGroup object in the component class -->
       <form [formGroup]="registerForm" (ngSubmit)="register()">
-
-        <!-- Each mat-form-field represents a form control where users can input data -->
 
         <!-- Input field for First Name -->
         <mat-form-field>
@@ -44,7 +42,8 @@
 
         <!-- Input field for Mobile Phone with validation for length -->
         <mat-form-field>
-          <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" maxlength="15" minlength="0" type="tel">
+          <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" maxlength="15" minlength="0"
+            type="tel">
         </mat-form-field>
 
         <!-- Input field for Email with type email -->

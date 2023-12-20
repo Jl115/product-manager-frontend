@@ -1,7 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryControllerService } from 'src/app/openapi-client/api/categoryController.service';
-import { CategoryDetailDto, CategoryShowDto, ProductShowDto } from 'src/app/openapi-client';
+import {
+  CategoryDetailDto,
+  CategoryShowDto,
+  ProductShowDto,
+} from 'src/app/openapi-client';
 import {
   FormControl,
   FormGroup,
@@ -17,7 +21,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   standalone: true, // Indicates a standalone component
   imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterLink], // Imports necessary modules
   templateUrl: './product-by-category.component.html', // HTML template for the component
-  styleUrls: ['./product-by-category.component.scss'] // Styles for the component
+  styleUrls: ['./product-by-category.component.scss'], // Styles for the component
 })
 export class ProductByCategoryComponent implements OnInit {
   categories: CategoryDetailDto[] = []; // Array to store detailed category data
@@ -76,7 +80,7 @@ export class ProductByCategoryComponent implements OnInit {
     this.cdr.detectChanges(); // Triggers change detection to update the view
   }
 
-  filterProductsInCategory(category: { products: any[]; }, searchText: string) {
+  filterProductsInCategory(category: { products: any[] }, searchText: string) {
     // Filters products in a given category based on search text
     if (!searchText) return category.products;
     return category.products.filter((product) =>
